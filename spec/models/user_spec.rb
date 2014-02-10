@@ -23,6 +23,10 @@ describe User do
       expect(user).to_not be_valid
     end
 
+    it 'admin status must be false for a non-admin' do
+      expect(user.admin.class).to be(FalseClass)
+    end
+
     it 'must have a uid' do
       user.update(uid: nil)
       expect(user).to_not be_valid
