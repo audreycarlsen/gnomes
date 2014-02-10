@@ -2,7 +2,7 @@ class SessionController < ApplicationController
   def create
     auth_hash = request.env['omniauth.auth']
 
-    if auth_hash["email"]
+    if auth_hash["uid"]
       @user = User.find_or_create_from_omniauth(auth_hash)
 
       if @user
