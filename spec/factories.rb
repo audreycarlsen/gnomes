@@ -4,8 +4,8 @@ FactoryGirl.define do
       "User #{n}" 
     end
 
-    sequence :email do |n| 
-      "user#{n}@example.com"
+    sequence :uid do |n| 
+      "#{n}"
     end
 
     admin :false
@@ -16,8 +16,8 @@ FactoryGirl.define do
       "Admin #{n}" 
     end
 
-    sequence :email do |n| 
-      "admin#{n}@example.com"
+    sequence :uid do |n| 
+      "#{n}"
     end
 
     admin :true

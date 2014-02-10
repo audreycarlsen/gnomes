@@ -15,6 +15,23 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+
+  config.before(:suite) do
+    # Once you have enabled test mode, all requests 
+    # to OmniAuth will be short circuited
+    # to use the mock authentication hash. 
+    # A request to /auth/provider will redirect 
+    # immediately to /auth/provider/callback.
+
+    OmniAuth.config.test_mode = true
+
+    # The mock_auth configuration allows you to 
+    # set per-provider (or default) authentication 
+    # hashes to return during testing.
+
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({:provider => 'twitter', :uid => '123545', info: {name: "Bookis"}})
+  end
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
