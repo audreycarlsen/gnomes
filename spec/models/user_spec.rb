@@ -22,5 +22,10 @@ describe User do
       user.update(admin: nil)
       expect(user).to_not be_valid
     end
+
+    it 'must have a uid' do
+      user.update(uid: nil)
+      expect(user).to_not be_valid
+    end
   end
 end

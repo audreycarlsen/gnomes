@@ -5,5 +5,9 @@ FactoryGirl.define do
     end
     
     admin :false
+
+    sequence :uid do |n| 
+      "#{n}"
+    end
   end
 end
