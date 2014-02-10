@@ -1,4 +1,6 @@
 Gnomes::Application.routes.draw do
+  resources :posts
+
   root 'users#index'
 
   resources :users
