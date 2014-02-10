@@ -23,8 +23,13 @@ describe User do
       expect(user).to_not be_valid
     end
 
-    it 'must have a uid' do
-      user.update(uid: nil)
+    it 'must have an email' do
+      user.update(email: nil)
+      expect(user).to_not be_valid
+    end
+
+    it 'email includes @' do
+      user.update(email: 'audrey')
       expect(user).to_not be_valid
     end
   end

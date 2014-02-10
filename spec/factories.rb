@@ -3,11 +3,23 @@ FactoryGirl.define do
     sequence :username do |n| 
       "User #{n}" 
     end
-    
-    admin :false
 
-    sequence :uid do |n| 
-      "#{n}"
+    sequence :email do |n| 
+      "user#{n}@example.com"
     end
+
+    admin :false
+  end
+
+  factory :admin do
+    sequence :username do |n| 
+      "Admin #{n}" 
+    end
+
+    sequence :email do |n| 
+      "admin#{n}@example.com"
+    end
+
+    admin :true
   end
 end
