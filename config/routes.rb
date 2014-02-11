@@ -8,4 +8,8 @@ Gnomes::Application.routes.draw do
 
   resources :users
   resources :posts
+
+  if Rails.env == "test"
+    get 'dummy/test_current_user' => 'dummy#test_current_user'
+  end
 end

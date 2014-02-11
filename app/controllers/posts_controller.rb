@@ -35,7 +35,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-        puts @post.inspect
      @post.destroy
      redirect_to root_url
   end
