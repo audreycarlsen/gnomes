@@ -45,4 +45,12 @@ describe PostsController do
       expect(response).to be_successful
     end
   end
+
+  describe "GET 'edit'" do
+    let(:post) { create(:post) }
+    it "is successful" do
+      get :show, id: post.id
+      expect(response).to be_successful
+    end
+  end
 end
