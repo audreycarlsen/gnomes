@@ -51,6 +51,8 @@ gem 'pg'
 
 gem 'figaro'
 
+gem 'simple_calendar'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

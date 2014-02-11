@@ -8,7 +8,7 @@
 </head>
 <body>
   <%= link_to "Home", root_path %>
-  <% if admin_user(current_user) %>
+  <% if current_user && admin_user(current_user) %>
   <%= link_to "New Post", new_post_path %> <!-- for admins only -->
   <% end %>
   <% if current_user %>
