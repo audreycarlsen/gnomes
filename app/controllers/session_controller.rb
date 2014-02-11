@@ -15,4 +15,10 @@ class SessionController < ApplicationController
       redirect_to root_path, notice: "Failed to authenticate."
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: 'Logged out!'
+  end
+
 end
