@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :admin_user, except: :index
+
+
   def index
   end
 
@@ -23,4 +26,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content)
   end
 
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end
