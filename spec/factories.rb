@@ -24,7 +24,14 @@ FactoryGirl.define do
   end
 
   factory :post do
-   title "Hello World"
-   content "This is some news you can use"
+    title "Hello World"
+    content "This is some news you can use"
+  end
+
+  factory :event do
+    title "Planting things"
+    description "It's time to plant the beets, y'all."
+    location "My place"
+    date Time.now
   end
 end

@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to login_url, notice: 'Please log in!' if current_user.nil?
+    redirect_to sign_in_path, notice: 'Please log in!' if current_user.nil?
   end
 end

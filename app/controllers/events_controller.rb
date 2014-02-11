@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :destroy, :join, :not_going, :update]
-  before_filter :authorize, only: [:new, :create, :join, :edit, :destroy]
+  before_action :set_event, only: [:show, :edit, :destroy, :rsvp, :rsvp_no, :update]
+  before_filter :authorize, only: [:new, :create, :rsvp, :rsvp_no, :edit, :destroy, :update]
 
   def new
     @event = Event.new
@@ -39,13 +39,12 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-
-  def join
-    @events_user = EventsUser.create(event_id: @event.id, user_id: session[:user_id])
+  def rsvp
+    @events_user = EventsUser.create(event_id: @event.id, user_id: session[:user_id], response: params[:response])
     redirect_to event_path(@event)
   end
 
-  def not_going
+  def rsvp_no
     @events_user = EventsUser.find_by(user_id: current_user.id, event_id: @event.id)
     @events_user.destroy
     redirect_to event_path(@event)

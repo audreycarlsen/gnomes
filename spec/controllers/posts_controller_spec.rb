@@ -42,8 +42,8 @@ describe PostsController do
       expect(response).to redirect_to root_path
     end
 
-    it 'redirects from GET#destroy' do
-      get :destroy, id: default_post.id
+    it 'redirects from DELETE#destroy' do
+      delete :destroy, id: default_post.id
       expect(response).to redirect_to root_path
     end
   end

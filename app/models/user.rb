@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :events, through: :events_users
   has_many :events_users
-  validates_format_of   :email, with: /\w+@\w+\.\w+/i
   validates :username, presence: true, uniqueness: true
   validates :username, length: { minumum: 3, maximum: 30 }
   validates :admin, inclusion: { in: [true, false] }

@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :admin_user, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :destroy, :update]
 
-
   def index
      @posts = Post.all.order('created_at DESC')
   end

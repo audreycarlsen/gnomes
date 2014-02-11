@@ -36,10 +36,11 @@
     <% if current_user && EventsUser.find_by(user_id: current_user.id, event_id:@event.id) %>
       <tr>
         <td><strong>Can't make it?</strong></td>
-        <td><%= button_to "Leave", not_going_path(@event), method: :delete %></td>
+        <td><%= button_to "No", rsvp_no_path(@event), method: :delete %></td>
     <% else %>
         <td><strong>RSVP here:</strong></td>
-        <td><%= button_to "Yes", join_path(@event) %></td>
+        <td><%= button_to "Yes", rsvp_path(@event, response: "yes") %></td>
+        <td><%= button_to "Maybe", rsvp_path(@event, response: "maybe") %></td>
     <% end %>
       </tr>
     </table>
