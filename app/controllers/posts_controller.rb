@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :admin_user, except: :index
+  before_action :admin_user, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :destroy, :update]
 
 
@@ -27,14 +27,15 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(event_params)
-      redirect_to event_path(@event)
+    if @post.update(post_params)
+      redirect_to post_path(@post)
     else
       render :edit
     end
   end
 
   def destroy
+        puts @post.inspect
      @post.destroy
      redirect_to root_url
   end
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
   end
 
   def admin_user
-    redirect_to root_url unless current_user.admin?
+    redirect_to root_url unless @current_user.admin == true
   end
 
   def set_post

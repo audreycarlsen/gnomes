@@ -7,9 +7,11 @@ FactoryGirl.define do
     sequence :uid do |n|
       "#{n}"
     end
+
+    admin false
   end
 
-  factory :admin do
+  factory :admin, class: User do
     sequence :username do |n|
       "Admin #{n}"
     end
@@ -18,7 +20,7 @@ FactoryGirl.define do
       "#{n}"
     end
 
-    admin :true
+    admin true
   end
 
   factory :post do
