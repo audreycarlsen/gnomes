@@ -7,6 +7,8 @@ FactoryGirl.define do
     sequence :uid do |n|
       "#{n}"
     end
+
+    admin false
   end
 
   factory :admin do
@@ -18,7 +20,7 @@ FactoryGirl.define do
       "#{n}"
     end
 
-    admin :true
+    admin true
   end
 
   factory :post do
