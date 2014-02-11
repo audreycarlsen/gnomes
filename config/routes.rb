@@ -1,10 +1,11 @@
 Gnomes::Application.routes.draw do
-  resources :posts
 
-  root 'users#index'
+  root 'posts#index'
+
+  get '/auth/twitter',                                   as: 'sign_in'
+  get '/sign_out',                to: 'session#destroy', as:'sign_out'
+  get '/auth/:provider/callback', to: 'session#create'
 
   resources :users
-
-  get '/auth/twitter',            as: 'sign_in'
-  get '/auth/:provider/callback', to: 'session#create'
+  resources :posts
 end
