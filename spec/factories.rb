@@ -11,7 +11,7 @@ FactoryGirl.define do
     admin false
   end
 
-  factory :admin do
+  factory :admin, class: User do
     sequence :username do |n|
       "Admin #{n}"
     end

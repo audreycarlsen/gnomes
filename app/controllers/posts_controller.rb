@@ -27,14 +27,15 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(event_params)
-      redirect_to event_path(@event)
+    if @post.update(post_params)
+      redirect_to post_path(@post)
     else
       render :edit
     end
   end
 
   def destroy
+        puts @post.inspect
      @post.destroy
      redirect_to root_url
   end
