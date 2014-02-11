@@ -1,7 +1,8 @@
 <% if @posts %>
   <% @posts.each do |p| %>
     <%= p.title %>
-    <%= time_ago_in_words(p.created_at) %> ago.</br>
-    <%= trancate(p.content, length: 200, omission: '#{link_to "More", show_post_path(p)}') %>
+    <%= time_ago_in_words(p.created_at) %> ago</br>
+    <%= truncate(p.content, length: 200, omission: '...') %>
+    <%= link_to "More", post_path(p) %>
   <% end %>
 <% end %>
