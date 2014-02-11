@@ -1,7 +1,7 @@
 Gnome Sweet Gnome
 =================
 
-You and your pair were recently contacted by a lawyer. Their client, a rich recluse, recently passed away, but apparently was so impressed with the Ada Developer Academy program that they wrote us into the will! We have received a $15,000,000 gift, with only one string attached - we have to help turn a large empty lot in the neighborhood into a community garden!
+Audrey and Galina were recently contacted by a lawyer whose client, a rich recluse, recently passed away, but apparently was so impressed with Ada Developers Academy that they wrote us into their will! We have received a $15,000,000 gift, with only one string attached - we have to help turn a large empty lot in the neighborhood into a community garden!
 
 ## Goals
 - Successful pair programming experience
