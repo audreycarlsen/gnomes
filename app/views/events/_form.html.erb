@@ -1,0 +1,35 @@
+  <%= form_for(@event) do |f| %>
+    <% if @event.errors.any? %>
+      <% @event.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+    <% end %>
+
+    <p>
+      <div class="field">
+        <%= f.label :title %> <br>
+        <%= f.text_field :title %>
+      </div>
+    </p>
+    <p>
+      <div class="field">
+       <%= f.label :description %> <br>
+       <%= f.text_area :description, rows:"10", cols:"30" %>
+      </div>
+    </p>
+    <p>
+      <div class="field">
+       <%= f.label :location %> <br>
+       <%= f.text_area :location%>
+      </div>
+    </p>
+    <p>
+      <div class="field">
+        <%= f.label :date, "Date:" %> <br>
+        <%= f.datetime_local_field :date%>
+      </div>
+    </p>
+    <div class="button">
+      <%= f.submit %>
+    </div>
+  <% end %>

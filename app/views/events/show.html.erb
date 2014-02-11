@@ -1,0 +1,46 @@
+
+
+    <% if current_user %>
+     <h3>Attending:</h3>
+      <% if @event.users.empty? %>
+        <em>No one joined yet</em>
+      <% else %>
+        <% @event.users.each do |user| %>
+          <%= "#{user.username}" %></br>
+        <% end%>
+      <% end%>
+    <% else %>
+      <p><%= link_to "You must be logged in to see who's attending", login_path %></p>
+    <% end %>
+
+
+
+    <h2><%= @event.title %></h2>
+
+    <% if current_user && current_user.id == @event.user_id %>
+      <%= link_to 'Edit Event', edit_event_path(@event) %> |
+      <%= link_to 'Delete', @event, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <% else %>
+        Added by <%= "#{User.find_by_id(@event.user_id).username}"%></br>
+     <% end %>
+
+    <p><strong>When:</strong>
+    <%= @event.date.strftime(" %B %d at %I:%M %p") %></p>
+      <tr>
+        <td><p><strong>Description:</strong></p></td>
+        <td><%= simple_format(@event.description.gsub(URI.regexp, '<a href="\0">\0</a>')).html_safe %></span></td>
+      </tr>
+    </table>
+
+    <table >
+    <% if current_user && EventsUser.find_by(user_id: current_user.id, event_id:@event.id) %>
+      <tr>
+        <td><strong>Can't make it?</strong></td>
+        <td><%= button_to "Leave", not_going_path(@event), method: :delete %></td>
+    <% else %>
+        <td><strong>RSVP here:</strong></td>
+        <td><%= button_to "Yes", join_path(@event) %></td>
+    <% end %>
+      </tr>
+    </table>
+    <hr>
