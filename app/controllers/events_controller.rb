@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     @event           = Event.new(event_params)
     @event[:user_id] = session[:user_id]
     if @event.save
-      redirect_to event_path(@event)
+      redirect_to event_path(@event), notice: "Good job, you created an event!"
     else
       render :new
     end
