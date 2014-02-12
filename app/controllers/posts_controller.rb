@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     if @post.save
       User.all.each do |user|
         if user.email
-          NewsMailer.new_post(@post.id, user.id).deliver
+          Resque.enqueue(EmailJob, @post.id, user.id)
         end
       end
       redirect_to root_path, notice: 'Post has been successfully created!'
