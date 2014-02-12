@@ -1,5 +1,7 @@
 Gnomes::Application.routes.draw do
 
+  resources :tools
+
   root 'posts#index'
 
   resources :events
