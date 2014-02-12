@@ -37,16 +37,15 @@
     </table>
 
     <table >
-    <% if current_user && EventsUser.find_by(user_id: current_user.id, event_id:@event.id) %>
-    <% eu = EventsUser.find_by(user_id: current_user.id, event_id:@event.id) %>
+    <% if current_user && eu %>
       <% case eu.response %>
       <% when "yes" %>
         <tr>
-          <td><strong>RSVP: </strong></td>
+          <td><strong>Change Your RSVP: </strong></td>
           <td><%= button_to "No", rsvp_no_path(@event), method: :delete %></td>
           <td><%= button_to "Maybe", rsvp_path(@event, response: "maybe") %></td>
       <% when "maybe" %>
-          <td><strong>RSVP: </strong></td>
+          <td><strong>Change Your RSVP: </strong></td>
           <td><%= button_to "No", rsvp_no_path(@event), method: :delete %></td>
           <td><%= button_to "Yes", rsvp_path(@event, response: "yes") %></td>
       <% end %>
