@@ -17,10 +17,10 @@
     <%= @weather.today.low.f %> F<br>
     <%= @weather.today.icon %><br><br>
 
-    <% @weather.forecast[0,5].each do |day| %>
+    <% @weather.forecast.first(5).each do |day| %>
       <%= day.high.f %> F<br>
-      <%= @weather.forecast[day].low.f %> F<br>
-      <%= @weather.forecast[day].icon %> <br><br>
+      <%= day.low.f %> F<br>
+      <%= day.icon %> <br><br>
     <% end %>
     </div>
 
