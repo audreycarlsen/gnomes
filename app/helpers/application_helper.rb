@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def forecast
-    date = Date.today.beginning_of_week
+    date = Date.today
     return (date..date + 4.days).to_a
   end
 end
