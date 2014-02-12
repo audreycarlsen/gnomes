@@ -1,4 +1,8 @@
+require 'resque/server'
+
 Gnomes::Application.routes.draw do
+
+  mount Resque::Server, :at => "/resque"
 
   root 'posts#index'
 

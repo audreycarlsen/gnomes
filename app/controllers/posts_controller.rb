@@ -16,6 +16,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      User.all.each do |user|
+        if user.email
+          NewsMailer.new_post(@post.id, user.id).deliver
+        end
+      end
       redirect_to root_path, notice: 'Post has been successfully created!'
     else
       render :new
