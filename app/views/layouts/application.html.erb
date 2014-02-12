@@ -27,8 +27,8 @@
       <tbody>
        <tr>
         <% @weather.forecast.first(5).each do |day| %>
-        <td><%= day.high.f %> F </td>
-        <td><%= day.low.f %> F</td>
+        <td><%= day.high.f %> &deg </td>
+        <td><%= day.low.f %> &deg</td>
         <% end %>
       </tr>
       <tr>
