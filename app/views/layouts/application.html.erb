@@ -9,7 +9,7 @@
 <body>
 
     RIGHT NOW:
-    <%= @weather.current.temperature.f %> F<br>
+    <%= @weather.current.temperature.f %>&deg<br>
      <%= image_tag "http://icons.wxug.com/i/c/i/#{@weather.current.icon}.gif", size: "30"  %><br><br>
      <table>
       <thead>
@@ -27,8 +27,8 @@
       <tbody>
        <tr>
         <% @weather.forecast.first(5).each do |day| %>
-        <td><%= day.high.f %> &deg </td>
-        <td><%= day.low.f %> &deg</td>
+        <td><%= day.high.f %>&deg </td>
+        <td><%= day.low.f %>&deg</td>
         <% end %>
       </tr>
       <tr>
