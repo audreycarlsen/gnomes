@@ -1,12 +1,16 @@
 
 
     <% if current_user %>
-     <h3>Attending:</h3>
       <% if @event.users.empty? %>
         <em>No one joined yet</em>
       <% else %>
-        <% @event.users.each do |user| %>
-          <%= "#{user.username}" %></br>
+       <h3>Yes:</h3>
+        <% @event.events_users.where(response:"yes").each do |eu| %>
+          <%= "#{eu.user.username}" %></br>
+        <% end%>
+         <h3>Maybe:</h3>
+        <% @event.events_users.where(response:"maybe").each do |eu| %>
+          <%= "#{eu.user.username}" %></br>
         <% end%>
       <% end%>
     <% else %>
@@ -34,11 +38,20 @@
 
     <table >
     <% if current_user && EventsUser.find_by(user_id: current_user.id, event_id:@event.id) %>
-      <tr>
-        <td><strong>Can't make it?</strong></td>
-        <td><%= button_to "No", rsvp_no_path(@event), method: :delete %></td>
+    <% eu = EventsUser.find_by(user_id: current_user.id, event_id:@event.id) %>
+      <% case eu.response %>
+      <% when "yes" %>
+        <tr>
+          <td><strong>RSVP: </strong></td>
+          <td><%= button_to "No", rsvp_no_path(@event), method: :delete %></td>
+          <td><%= button_to "Maybe", rsvp_path(@event, response: "maybe") %></td>
+      <% when "maybe" %>
+          <td><strong>RSVP: </strong></td>
+          <td><%= button_to "No", rsvp_no_path(@event), method: :delete %></td>
+          <td><%= button_to "Yes", rsvp_path(@event, response: "yes") %></td>
+      <% end %>
     <% else %>
-        <td><strong>RSVP here:</strong></td>
+        <td><strong>RSVP: </strong></td>
         <td><%= button_to "Yes", rsvp_path(@event, response: "yes") %></td>
         <td><%= button_to "Maybe", rsvp_path(@event, response: "maybe") %></td>
     <% end %>
