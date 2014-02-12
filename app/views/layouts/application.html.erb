@@ -7,6 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div>
+    RIGHT NOW:
+    <%= @weather.current.temperature.f %> F<br>
+    <%= @weather.current.icon %><br><br>
+
+    TODAY:<br>
+    <%= @weather.today.high.f %> F<br>
+    <%= @weather.today.low.f %> F<br>
+    <%= @weather.today.icon %><br><br>
+
+    <% @weather.forecast[0,5].each do |day| %>
+      <%= day.high.f %> F<br>
+      <%= @weather.forecast[day].low.f %> F<br>
+      <%= @weather.forecast[day].icon %> <br><br>
+    <% end %>
+    </div>
+
   <%= link_to "Home", root_path %>
   <% if current_user && admin_user(current_user) %>
   <%= link_to "New Post", new_post_path %> <!-- for admins only -->

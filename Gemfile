@@ -53,6 +53,8 @@ gem 'figaro'
 
 gem 'simple_calendar'
 
+gem 'barometer'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

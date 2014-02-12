@@ -82,7 +82,7 @@ describe EventsController do
 
         it "belongs to current user" do
           post :create, event: valid_attributes
-          expect { event.user_id }.to eq(default_user.id)
+          expect { assigns(:event).user_id }.to eq(default_user.id)
         end
 
         it "sets a flash message" do
