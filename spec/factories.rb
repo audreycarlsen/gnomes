@@ -34,4 +34,8 @@ FactoryGirl.define do
     location "My place"
     date Time.now
   end
+
+  factory :tool do
+    title "shovel"
+  end
 end
