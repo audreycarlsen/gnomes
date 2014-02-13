@@ -2,9 +2,10 @@ require 'resque/server'
 
 Gnomes::Application.routes.draw do
 
+  get "welcome/index"
   mount Resque::Server, :at => "/resque"
 
-  root 'posts#index'
+  root 'welcome#index'
 
   resources :events
   resources :users
@@ -13,7 +14,7 @@ Gnomes::Application.routes.draw do
 
   get '/auth/twitter',                                    as: 'sign_in'
   get '/sign_out',                 to: 'session#destroy', as: 'sign_out'
-  post '/auth/:provider/callback', to: 'session#create'
+  get '/auth/:provider/callback', to: 'session#create'
   post '/events/:id/:response'     => "events#rsvp",      as: 'rsvp'
   delete '/events/:id/no'          => "events#rsvp_no",   as: 'rsvp_no'
   post '/tools/:id/reserve',      to: 'tools#reserve_tool',   as: 'reserve_tool'
