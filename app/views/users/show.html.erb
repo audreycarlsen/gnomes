@@ -12,3 +12,10 @@
   <%= @user.phone %>
 <% end %>
 </p>
+
+Reserved Tools:
+<% @user.tools.each do |tool| %>
+  <%= tool.title %><br>
+  <%= time_ago_in_words(tool.created_at) %> ago
+  <%= button_to "Return", return_tool_path(tool) %>
+<% end %>

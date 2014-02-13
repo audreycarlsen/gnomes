@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :username, length: { minumum: 3, maximum: 30 }
   validates :admin, inclusion: { in: [true, false] }
   validates :uid, presence: true, uniqueness: true
+  has_many :tools
 
 
 

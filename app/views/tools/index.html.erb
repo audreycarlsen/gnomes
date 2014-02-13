@@ -1,5 +1,14 @@
 <% if @tools %>
   <% @tools.each do |t| %>
-    <%= t.title %>
+  <ul>
+    <li>
+      <%= t.title %>
+      <% if t.user_id.nil? %>
+        <%= button_to "reserve", reserve_tool_path(t) %>
+      <% else %>
+        <em>reserved</em>
+      <% end %>
+    </li>
+  </ul>
   <% end %>
 <% end %>
