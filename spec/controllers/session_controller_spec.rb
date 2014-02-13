@@ -23,4 +23,21 @@ describe SessionController do
       response.should redirect_to root_path
     end
   end
+
+  describe "#destroy" do
+    before do
+      post :create, provider: :twitter
+    end
+
+    it "should successfully destroy a session" do
+      expect(session[:user_id]).to_not be_nil
+      get :destroy
+      expect(session[:user_id]).to be_nil
+    end
+
+    it "should redirect the user to the root url" do
+      get :destroy
+      response.should redirect_to root_path
+    end
+  end
 end

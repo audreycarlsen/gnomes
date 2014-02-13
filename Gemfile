@@ -57,6 +57,9 @@ gem 'barometer'
 
 gem 'resque'
 
+group :test do
+  gem 'resque_spec'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
