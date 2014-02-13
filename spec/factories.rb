@@ -38,6 +38,7 @@ FactoryGirl.define do
   factory :rsvp, class: EventsUser do
     user_id 1
     event_id 1
+    response "maybe"
   end
 
   factory :tool do

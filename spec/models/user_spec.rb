@@ -31,6 +31,11 @@ describe User do
       user.update(uid: nil)
       expect(user).to_not be_valid
     end
+
+    it 'uid is unique' do
+      user2 = build(:user, uid: user.uid)
+      expect(user2).to_not be_valid
+    end
   end
 
   describe 'methods' do
