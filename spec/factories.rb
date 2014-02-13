@@ -38,6 +38,7 @@ FactoryGirl.define do
   factory :rsvp, class: EventsUser do
     user_id 1
     event_id 1
+  end
 
   factory :tool do
     title "shovel"
