@@ -11615,6 +11615,7 @@ a.ui.teal.label:hover:before {
 
 .ui.right.floated.segment {
   float: right;
+  background-color:transparent;
 }
 
 /*-------------------

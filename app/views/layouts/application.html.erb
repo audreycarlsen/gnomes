@@ -3,52 +3,31 @@
 <head>
   <title>Gnomes</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "semantic", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "semantic", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="home">
+  <div class="ui inverted page grid masthead segment">
+   <div class="inverted secondary pointing ui menu">
+    <div class="header item">Gnome Sweet Gnome</div>
+    <div class="right menu">
+     <%= link_to "Home", root_path, class: "item" %>
+     <%= link_to "News", "/#news", class: "item"  %>
+     <%= link_to "Events", "/#events", class: "item"  %>
+     <%= link_to "Tools", "/#tools", class: "item"  %>
+   </div>
+ </div>
+</div>
 
-    RIGHT NOW:
-    <%= @weather.current.temperature.f %>&deg<br>
-     <%= image_tag "http://icons.wxug.com/i/c/i/#{@weather.current.icon}.gif", size: "30"  %><br><br>
-     <table>
-      <thead>
-        <tr>
-          <% forecast.each do |day| %>
-          <th><%= day.strftime("%b %e") %></th>
-          <% end %>
-        </tr>
-       <!--  <tr>
-          <% 5.times do %>
-          <th>High</th><th>Low</th>
-          <% end %>
-        </tr> -->
-      </thead>
-      <tbody>
-        <tr>
-         <% @weather.forecast.first(5).each do |day| %>
-         <td><%= image_tag "http://icons.wxug.com/i/c/i/#{day.icon}.gif", size: "30"  %> </td>
-         <% end %>
-       </tr>
-       <tr>
-        <% @weather.forecast.first(5).each do |day| %>
-        <td><strong><%= day.high.f %>&deg</strong>/
-        <%= day.low.f %>&deg</td>
-        <% end %>
-      </tr>
 
-   </tbody>
- </table>
 
-  <%= link_to "Home", root_path %>
-  <% if current_user && admin_user(current_user) %>
-  <%= link_to "New Post", new_post_path %> <!-- for admins only -->
-  <% end %>
-  <% if current_user %>
-    <%= link_to "Sign out", sign_out_path %>
-  <% else %>
-    <%= link_to "Sign In with Twitter", sign_in_path%>
-  <% end %>
+
+
+
+
 
 <%= yield %>
 
