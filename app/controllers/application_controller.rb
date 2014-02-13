@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   def set_weather
     @barometer = Barometer.new('Seattle')
     @weather = @barometer.measure
+  rescue Barometer::TimeoutError
+    nil
   end
 
   def current_user
