@@ -1,8 +1,15 @@
+
 <% if @posts %>
   <% @posts.each do |p| %>
+  <div class="column">
     <%= p.title %>
     <%= time_ago_in_words(p.created_at) %> ago</br>
     <%= truncate(p.content, length: 200, omission: '...') %>
     <%= link_to "More", post_path(p) %>
+    </div>
   <% end %>
 <% end %>
+
+
+
+

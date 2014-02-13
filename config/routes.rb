@@ -2,9 +2,10 @@ require 'resque/server'
 
 Gnomes::Application.routes.draw do
 
+  get "welcome/index"
   mount Resque::Server, :at => "/resque"
 
-  root 'posts#index'
+  root 'welcome#index'
 
   resources :events
   resources :users
