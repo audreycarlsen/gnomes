@@ -14,6 +14,10 @@
 //= require jquery_ujs
 // require turbolinks
 //= require_tree .
+
+//*************************************
+//               DISQUS
+//*************************************
    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'gnomesweetgnome'; // required: replace example with your forum shortname
 
@@ -30,3 +34,64 @@
         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
+//*************************************
+//               SEMANTIC
+//*************************************
+
+           $(document)
+  .ready(function() {
+
+    var
+      changeSides = function() {
+        $('.ui.shape')
+          .eq(0)
+            .shape('flip over')
+            .end()
+          .eq(1)
+            .shape('flip over')
+            .end()
+          .eq(2)
+            .shape('flip back')
+            .end()
+          .eq(3)
+            .shape('flip back')
+            .end()
+        ;
+      },
+      validationRules = {
+        firstName: {
+          identifier  : 'email',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter an e-mail'
+            },
+            {
+              type   : 'email',
+              prompt : 'Please enter a valid e-mail'
+            }
+          ]
+        }
+      }
+    ;
+
+    $('.ui.dropdown')
+      .dropdown({
+        on: 'hover'
+      })
+    ;
+
+    $('.ui.form')
+      .form(validationRules, {
+        on: 'blur'
+      })
+    ;
+
+    $('.masthead .information')
+      .transition('scale in')
+    ;
+
+    setInterval(changeSides, 3000);
+
+  })
+;
