@@ -9,6 +9,10 @@ FactoryGirl.define do
     end
 
     admin false
+
+    sequence :email do |n|
+      "user#{n}@example.com"
+    end
   end
 
   factory :admin, class: User do
