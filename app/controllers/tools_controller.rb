@@ -1,6 +1,6 @@
 class ToolsController < ApplicationController
-   before_action :admin_user, except: [:index, :show]
-  before_action :set_tool, only: [:show, :edit, :destroy, :update]
+  before_action :admin_user, except: [:index, :show]
+  before_action :set_tool, only: [:show, :edit, :destroy, :update, :reserve_tool, :return_tool]
 
   def index
     @tools = Tool.all
@@ -16,7 +16,7 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     if @tool.save
-      redirect_to tool_path(@tool), notice: '#{tool.title} has been successfully added to the toolset!'
+      redirect_to tool_path(@tool), notice: '#{@tool.title} has been successfully added to the toolset!'
     else
       render :new
     end
@@ -37,6 +37,17 @@ class ToolsController < ApplicationController
      @tool.destroy
      redirect_to tools_path
   end
+
+   def reserve_tool
+    @tool.update(user_id: current_user.id)
+    redirect_to tool_path(@tool), notice: "#{@tool.title} has been reserved!"
+  end
+
+   def return_tool
+    @tool.update(user_id: nil)
+    redirect_to user_path(current_user), notice: "Thank you, the tool is returned!"
+  end
+
 
   private
 
