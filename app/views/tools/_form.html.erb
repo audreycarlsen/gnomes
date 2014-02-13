@@ -1,0 +1,17 @@
+  <%= form_for(@tool) do |f| %>
+    <% if @tool.errors.any? %>
+      <% @tool.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+    <% end %>
+
+    <p>
+      <div class="field">
+        <%= f.label :title %> <br>
+        <%= f.text_field :title %>
+      </div>
+    </p>
+    <div class="button">
+      <%= f.submit %>
+    </div>
+  <% end %>

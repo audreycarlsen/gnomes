@@ -9,6 +9,7 @@ Gnomes::Application.routes.draw do
   resources :events
   resources :users
   resources :posts
+  resources :tools
 
   get '/auth/twitter',                                   as: 'sign_in'
   get '/sign_out',                to: 'session#destroy', as: 'sign_out'
