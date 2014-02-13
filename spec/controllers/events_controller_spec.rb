@@ -68,6 +68,13 @@ describe EventsController do
       end
     end
 
+    describe "GET 'index'" do
+      it "is successful" do
+        get :index
+        expect(response).to be_successful
+      end
+    end
+
     describe "POST 'create'" do
       context "with valid attributes" do
         
@@ -82,7 +89,7 @@ describe EventsController do
 
         it "belongs to current user" do
           post :create, event: valid_attributes
-          expect { assigns(:event).user_id }.to eq(default_user.id)
+          expect(assigns(:event).user_id).to eq(default_user.id)
         end
 
         it "sets a flash message" do
@@ -97,7 +104,7 @@ describe EventsController do
           expect(response).to render_template :new
         end
 
-        it "does not create a post" do
+        it "does not create an event" do
           expect { post :create, event: {title: nil} }.to change(Event, :count).by(0)
         end
       end
@@ -118,7 +125,7 @@ describe EventsController do
     end
 
     describe "PATCH 'update'" do
-      it 'to redirect and update' do
+      it 'redirects and updates' do
         patch :update, id: default_event.id, event: { title: "This is a new title" }
 
         expect(default_event.reload.title). to eq("This is a new title")
@@ -134,10 +141,29 @@ describe EventsController do
         expect(response).to redirect_to events_path
       end
 
-      it "decreases post count by 1" do
+      it "decreases event count by 1" do
         expect { delete :destroy, id: default_event.id }.to change(Event, :count).by(-1)
       end
     end
-  end
 
+    describe "POST 'rsvp'" do
+      it "is a redirect" do
+        post :rsvp, id: default_event.id, response: "yes"
+        expect(response).to redirect_to event_path(default_event.id)
+      end
+    end
+
+    describe "DELETE 'rsvp_no'" do
+      let!(:rsvp) { create(:rsvp, user_id: default_user.id, event_id: default_event.id) }
+
+      it "is a redirect" do
+        delete :rsvp_no, id: default_event.id
+        expect(response).to redirect_to event_path(default_event.id)
+      end
+
+      it "decreases events_user count by 1" do
+        expect { delete :rsvp_no, id: default_event.id }.to change(EventsUser, :count).by(-1)
+      end
+    end
+  end
 end

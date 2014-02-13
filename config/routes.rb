@@ -1,12 +1,15 @@
+require 'resque/server'
+
 Gnomes::Application.routes.draw do
 
-  resources :tools
+  mount Resque::Server, :at => "/resque"
 
   root 'posts#index'
 
   resources :events
   resources :users
   resources :posts
+  resources :tools
 
   get '/auth/twitter',                                   as: 'sign_in'
   get '/sign_out',                to: 'session#destroy', as: 'sign_out'

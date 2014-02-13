@@ -26,4 +26,16 @@ Gnomes::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.mandrillapp.com",
+    port:                 587,
+    enable_starttls_auto: true,
+    user_name:            "audreycarlsen@gmail.com", # YOUR MANDRILL USERNAME
+    password:             ENV["MANDRILL_KEY"], # A MANDRILL API KEY
+    authentication:       'login',
+    domain:               'yourdomain.com'
+  }
 end

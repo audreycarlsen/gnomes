@@ -1,0 +1,14 @@
+<h1>WELCOME TO UR PROFILE</h1>
+
+<p><%= @user.username %></p>
+
+<p>
+<% if @user.email %>
+  <%= @user.email %>
+<% end %>
+</p>
+<p>
+<% if @user.phone %>
+  <%= @user.phone %>
+<% end %>
+</p>
