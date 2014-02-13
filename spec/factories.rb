@@ -35,6 +35,10 @@ FactoryGirl.define do
     date Time.now
   end
 
+  factory :rsvp, class: EventsUser do
+    user_id 1
+    event_id 1
+
   factory :tool do
     title "shovel"
   end
