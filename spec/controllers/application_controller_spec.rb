@@ -8,6 +8,10 @@ class DummyController < ApplicationController
   def test_authorize
     redirect_to root_path
   end
+
+  def test_set_weather
+    redirect_to root_path
+  end
 end
 
 describe DummyController do
@@ -51,6 +55,13 @@ describe DummyController do
       get :test_authorize
 
       expect(response).to_not redirect_to sign_in_path
+    end
+  end
+
+  describe "set_weather" do
+    it "creates an instance of the Barometer class" do
+      get :test_set_weather
+      expect(assigns(:barometer).class).to be(Barometer::Base)
     end
   end
 end

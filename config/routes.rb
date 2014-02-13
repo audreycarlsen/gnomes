@@ -20,5 +20,6 @@ Gnomes::Application.routes.draw do
   if Rails.env == "test"
     get 'dummy/test_current_user' => 'dummy#test_current_user'
     get 'dummy/test_authorize'    => 'dummy#test_authorize'
+    get 'dummy/test_set_weather'  => 'dummy#test_set_weather'
   end
 end
