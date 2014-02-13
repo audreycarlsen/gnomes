@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :admin, inclusion: { in: [true, false] }
   validates :uid, presence: true, uniqueness: true
+  has_many :tools
 
   def self.find_or_create_from_omniauth(auth_hash)
     user = User.find_by(uid: auth_hash["uid"].to_s) || User.create_from_omniauth(auth_hash)
