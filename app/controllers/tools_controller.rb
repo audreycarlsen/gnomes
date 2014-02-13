@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :admin_user, except: [:index, :show]
+  before_action :admin_user, except: [:index, :show, :reserve_tool, :return_tool]
   before_action :set_tool, only: [:show, :edit, :destroy, :update, :reserve_tool, :return_tool]
 
   def index
@@ -45,7 +45,7 @@ class ToolsController < ApplicationController
 
    def return_tool
     @tool.update(user_id: nil)
-    redirect_to user_path(current_user), notice: "Thank you, the tool is returned!"
+    redirect_to tool_path(@tool), notice: "Thank you, the tool is returned!"
   end
 
 

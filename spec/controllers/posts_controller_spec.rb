@@ -119,7 +119,7 @@ describe PostsController do
       #     post :create, post: valid_attributes
       #     EmailJob.should have_queued(assigns(:user).id)
       #   end
-      # end
+      end
 
       context "with invalid attributes" do
         it "renders the new template" do

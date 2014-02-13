@@ -17,5 +17,5 @@ Reserved Tools:
 <% @user.tools.each do |tool| %>
   <%= tool.title %><br>
   <%= time_ago_in_words(tool.updated_at) %> ago
-  <%= button_to "Return", return_tool_path(tool) %>
+  <%= button_to "Return", return_tool_path(tool), method: :patch %>
 <% end %>
