@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   def rsvp
-    @events_user = EventsUser.find_or_create_by(@event.id, session[:user_id], params[:response])
+    @events_user = EventsUser.find_or_create_by(@event.id, current_user.id, params[:response])
     redirect_to event_path(@event)
   end
 
