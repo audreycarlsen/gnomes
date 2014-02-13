@@ -17,17 +17,17 @@ describe EventsController do
 
     it 'redirects from GET#new' do
       get :new
-      expect(response).to redirect_to sign_in_path
+      expect(response).to redirect_to root_path
     end
 
     it 'redirects from GET#edit' do
       get :edit, id: default_event.id
-      expect(response).to redirect_to sign_in_path
+      expect(response).to redirect_to root_path
     end
 
     it 'redirects from POST#create' do
       post :create, post: valid_attributes
-      expect(response).to redirect_to sign_in_path
+      expect(response).to redirect_to root_path
     end
 
     it 'GET#show is successful' do
@@ -37,22 +37,22 @@ describe EventsController do
 
     it 'redirects from PATCH#update' do
       patch :update, id: default_event.id
-      expect(response).to redirect_to sign_in_path
+      expect(response).to redirect_to root_path
     end
 
     it 'redirects from DELETE#destroy' do
       delete :destroy, id: default_event.id
-      expect(response).to redirect_to sign_in_path
+      expect(response).to redirect_to root_path
     end
 
     it 'redirects from POST#rsvp' do
       post :rsvp, id: default_event.id, response: "yes"
-      expect(response).to redirect_to sign_in_path
+      expect(response).to redirect_to root_path
     end
 
     it 'redirects from DELETE#rsvp_no' do
       delete :rsvp_no, id: default_event.id
-      expect(response).to redirect_to sign_in_path
+      expect(response).to redirect_to root_path
     end
   end
 
