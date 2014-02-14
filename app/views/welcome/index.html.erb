@@ -48,16 +48,47 @@
     </div>
   </div>
 
-<div id="news">
- <div class="ui page grid overview segment">
-    <div class="ui two wide column"></div>
-    <div class="twelve wide column">
-      <div class="ui three column center aligned stackable divided grid">
-         <%= render :template => "posts/index" %>
+  <div id="news">
+    <div class="ui page grid stackable relaxed feature segment">
+      <div class="row">
+        <div class="column">
+          <h1 class="center aligned ui header">
+            Gnome Gnews
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="ui three column center aligned stackable divided grid">
+         <% if @posts %>
+           <% @posts.each do |p| %>
+             <div class="column">
+              <div class="ui icon header">
+                <%= p.title %>
+              </div>
+              <p><em><%= time_ago_in_words(p.created_at) %> ago</em></p>
+              <p><%= truncate(p.content, length: 200, omission: '...') %></p>
+              <p><%= link_to "More", post_path(p), class: "ui blue button"%>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
+    <div class="row">
+      <div class="column">
+       <h1 class="center aligned ui header">
+        <a href="/posts">
+         <div class="ui basic animated button button">
+          <div class="visible content">Read More</div>
+          <div class="hidden content"><i class="right arrow icon"></i></div>
+        </div>
+      </a>
+    </h1>
+  </div>
 </div>
 </div>
+</div>
+
 
 
 
