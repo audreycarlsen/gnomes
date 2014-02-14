@@ -40,12 +40,15 @@ class ToolsController < ApplicationController
 
    def reserve_tool
     @tool.update(user_id: current_user.id)
-    redirect_to tool_path(@tool), notice: "#{@tool.title} has been reserved!"
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.json {head :no_content}
+    end
   end
 
    def return_tool
     @tool.update(user_id: nil)
-    redirect_to tool_path(@tool), notice: "Thank you, the tool is returned!"
+    redirect_to :back, notice: "Thank you, the tool is returned!"
   end
 
 
