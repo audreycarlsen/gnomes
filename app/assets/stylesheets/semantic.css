@@ -11638,7 +11638,7 @@ a.ui.teal.label:hover:before {
 
 .ui.inverted.segment,
 .ui.primary.inverted.segment {
-  background-color: #222222;
+  background-color: transparent;
   color: #FFFFFF;
 }
 
