@@ -1,8 +1,8 @@
 $(function() {
-  $(".checkout").on( "click", function() {
+  $(".checkout_button").on( "click", function() {
 
-    var checkout = $(this);
-    var status   = $(this).parents('td');
+    var checkout_button = $(this);
+    var status          = $(this).parents('td');
 
     $.ajax({
       url: $(this).parents('form').attr("action"),
@@ -10,9 +10,9 @@ $(function() {
       dataType: 'json',
 
       success: function(data, textStatus, xhr) {
-        checkout.remove();
-        var checked_out = '<em>Checked out</em>';
-        status.append(checked_out);
+        checkout_button.remove();
+        var return_button = '<em>Checked out</em>';
+        status.append(return_button);
       },
 
       error: function(xhr, textStatus, errorThrown) {

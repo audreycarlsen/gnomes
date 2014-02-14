@@ -14,7 +14,7 @@
           </td>
           <td>
             <% if t.user_id.nil? %>
-              <%= button_to "Check Out", reserve_tool_path(t), method: :patch, class: "checkout" %>
+              <%= button_to "Check Out", reserve_tool_path(t), method: :patch, class: "checkout_button" %>
             <% else %>
               <em>Checked out</em>
             <% end %>

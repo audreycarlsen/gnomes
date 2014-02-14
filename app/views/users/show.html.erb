@@ -1,17 +1,20 @@
 <h1>WELCOME TO UR PROFILE</h1>
 
-<p><%= @user.username %></p>
-
-<p>
-<% if @user.email %>
-  <%= @user.email %>
-<% end %>
-</p>
-<p>
-<% if @user.phone %>
-  <%= @user.phone %>
-<% end %>
-</p>
+<table>
+  <tr>
+    <td class="profile-table"><%= image_tag @user.avatar_url, class: 'rounded ui image' %></td>
+    <td class="profile-table">
+      <h2><%= @user.username %></h2>
+      <% if @user.email %>
+        <%= @user.email %>
+      <% end %>
+      <br>
+      <% if @user.phone %>
+        <%= @user.phone %>
+      <% end %>
+    </td>
+  </tr>
+</table>
 
 Reserved Tools:
 <% @user.tools.each do |tool| %>
