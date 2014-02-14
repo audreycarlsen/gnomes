@@ -10,6 +10,7 @@ describe ToolsController do
 
     before(:each) do
       session[:user_id] = user.id
+      request.env["HTTP_REFERER"] = "where_i_came_from"
     end
 
     it 'GET#index is successful' do
@@ -56,7 +57,7 @@ describe ToolsController do
 
       it "redirects" do
         patch :reserve_tool, id: default_tool.id
-        expect(response).to redirect_to tool_path(default_tool.id)
+        expect(response).to redirect_to "where_i_came_from"
       end
     end
 
@@ -70,8 +71,8 @@ describe ToolsController do
       end
 
       it "redirects" do
-        patch :reserve_tool, id: default_tool.id
-        expect(response).to redirect_to tool_path(default_tool.id)
+        patch :return_tool, id: default_tool.id
+        expect(response).to redirect_to "where_i_came_from"
       end
     end
   end

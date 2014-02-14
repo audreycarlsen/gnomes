@@ -1,14 +1,26 @@
-<% if @tools %>
-  <% @tools.each do |t| %>
-  <ul>
-    <li>
-      <%= t.title %>
-      <% if t.user_id.nil? %>
-        <%= button_to "reserve", reserve_tool_path(t), method: :patch %>
-      <% else %>
-        <em>reserved</em>
+<table class="ui basic table">
+  <% if @tools %>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tools.each do |t| %>
+        <tr>
+          <td>
+            <%= t.title %>
+          </td>
+          <td>
+            <% if t.user_id.nil? %>
+              <%= button_to "Check Out", reserve_tool_path(t), method: :patch, class: "checkout_button" %>
+            <% else %>
+              <em>Checked out</em>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
-    </li>
-  </ul>
+    </tbody>
   <% end %>
-<% end %>
+</table>
