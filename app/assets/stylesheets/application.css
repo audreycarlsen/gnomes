@@ -24,7 +24,7 @@ body {
 
 body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  background: #FFFFFF;
+  background-color: #90dd2c;
   margin: 0px;
   padding: 0px;
   color: #555555;
@@ -37,7 +37,7 @@ body {
 *******************************/
 
 .ui.header {
-  font-family: 'Source Sans Pro', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: 'Gabriela', serif;
 }
 
 .ui.header,
@@ -76,6 +76,9 @@ p a {
   font-weight: bold;
 }
 
+#nav {
+
+}
 /*******************************
             Global
 *******************************/
