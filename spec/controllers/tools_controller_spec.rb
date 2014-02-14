@@ -10,6 +10,7 @@ describe ToolsController do
 
     before(:each) do
       session[:user_id] = user.id
+      request.env["HTTP_REFERER"] = "where_i_came_from"
     end
 
     it 'GET#index is successful' do
@@ -45,6 +46,34 @@ describe ToolsController do
     it 'redirects from DELETE#destroy' do
       delete :destroy, id: default_tool.id
       expect(response).to redirect_to root_path
+    end
+
+    describe 'reserve_tool' do
+      it "assigns tool to user" do
+        expect(default_tool.user_id).to be_nil
+        patch :reserve_tool, id: default_tool.id
+        expect(default_tool.reload.user_id).to eq(user.id)
+      end
+
+      it "redirects" do
+        patch :reserve_tool, id: default_tool.id
+        expect(response).to redirect_to "where_i_came_from"
+      end
+    end
+
+    describe 'return_tool' do
+      let!(:default_tool) { create(:tool, user_id: user.id) }
+
+      it "resets tool's user_id to nil" do
+        expect(default_tool.user_id).to eq(user.id)
+        patch :return_tool, id: default_tool.id
+        expect(default_tool.reload.user_id).to be_nil
+      end
+
+      it "redirects" do
+        patch :return_tool, id: default_tool.id
+        expect(response).to redirect_to "where_i_came_from"
+      end
     end
   end
 

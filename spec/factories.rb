@@ -47,5 +47,6 @@ FactoryGirl.define do
 
   factory :tool do
     title "shovel"
+    user_id nil
   end
 end

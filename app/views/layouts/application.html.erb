@@ -14,21 +14,14 @@
    <div class="inverted secondary pointing ui menu">
     <div class="header item">Gnome Sweet Gnome</div>
     <div class="right menu">
-     <%= link_to "Home", root_path, class: "item" %>
-     <%= link_to "News", "/#news", class: "item"  %>
-     <%= link_to "Events", "/#events", class: "item"  %>
-     <%= link_to "Tools", "/#tools", class: "item"  %>
+      <%= link_to "Home", root_path, class: "item" %>
+      <%= link_to "Profile", user_path(current_user.id), class: "item" %>
+      <%= link_to "News", "/#news", class: "item"  %>
+      <%= link_to "Events", "/#events", class: "item"  %>
+      <%= link_to "Tools", "/#tools", class: "item"  %>
    </div>
  </div>
 </div>
-
-
-
-
-
-
-
-
 
 <%= yield %>
 
