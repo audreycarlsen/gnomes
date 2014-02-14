@@ -42,13 +42,16 @@ class ToolsController < ApplicationController
     @tool.update(user_id: current_user.id)
     respond_to do |format|
       format.html {redirect_to :back}
-      format.json {head :no_content}
+      format.json {render json: @tool}
     end
   end
 
    def return_tool
     @tool.update(user_id: nil)
-    redirect_to :back, notice: "Thank you, the tool is returned!"
+    respond_to do |format|
+      format.html {redirect_to :back, notice: "Thank you, the tool is returned!"}
+      format.json {render json: @tool}
+    end
   end
 
 
