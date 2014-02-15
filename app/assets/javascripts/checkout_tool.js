@@ -4,43 +4,42 @@ $(function() {
     var button = $(this);
     var form   = $(this).parents('form');
 
-    if( button.is(".checkout_button") ){
-      $.ajax({
-        url: $(this).parents('form').attr("action"),
-        type: 'PATCH',
-        dataType: 'json',
+    var getOppositeButton = function( button ){
+      var opposite_button;
 
-        success: function(data, textStatus, xhr) {
-          button.remove();
-          var checkin_button = "<input class='checkin_button ui mini blue button' type='submit' value='Check In'></input>";
-          form.append(checkin_button);
-          form.attr("action", "/tools/" + data.id + "/return");
-        },
+      if( button.is(".checkout_button") ){
+        opposite_button = "<input class='checkin_button ui mini blue button' type='submit' value='Check In'></input>";
+      } else {
+        opposite_button = "<input class='checkout_button ui mini blue button' type='submit' value='Check Out'></input>";
+      }
+      return opposite_button;
+    };
 
-        error: function(xhr, textStatus, errorThrown) {
-          alert("Something has gone horribly wrong.");
-        }
-      });
-    }
-    else {
-      $.ajax({
-        url: $(this).parents('form').attr("action"),
-        type: 'PATCH',
-        dataType: 'json',
+    var getFormUrl = function ( button ){
+      var form_url;
+      if( button.is(".checkout_button") ){
+        form_url = "/return";
+      } else {
+        form_url = "/reserve";
+      }
+      return form_url;
+    };
 
-        success: function(data, textStatus, xhr) {
-          button.remove();
-          var checkout_button = "<input class='checkout_button ui mini blue button' type='submit' value='Check Out'></input>";
-          form.append(checkout_button);
-          form.attr("action", "/tools/" + data.id + "/reserve");
-        },
+    $.ajax({
+      url: $(this).parents('form').attr("action"),
+      type: 'PATCH',
+      dataType: 'json'
+    })
+    .done(function(data){
+      button.remove();
 
-        error: function(xhr, textStatus, errorThrown) {
-          alert("Something has gone horribly wrong.");
-        }
-      });
-    }
-
+      form.attr("action", "/tools/" + data.id + getFormUrl( button) );
+      
+      form.append(getOppositeButton( button ));
+    })
+    .fail(function(){
+      alert("Something has gone horribly wrong.");
+    });
     return false;
   });
 });
