@@ -1,6 +1,7 @@
 class ToolsController < ApplicationController
   before_action :admin_user, except: [:index, :show, :reserve_tool, :return_tool]
   before_action :set_tool, only: [:show, :edit, :destroy, :update, :reserve_tool, :return_tool]
+  before_action :authorize
 
   def index
     @tools = Tool.all
@@ -42,13 +43,16 @@ class ToolsController < ApplicationController
     @tool.update(user_id: current_user.id)
     respond_to do |format|
       format.html {redirect_to :back}
-      format.json {head :no_content}
+      format.json {render json: @tool}
     end
   end
 
    def return_tool
     @tool.update(user_id: nil)
-    redirect_to :back, notice: "Thank you, the tool is returned!"
+    respond_to do |format|
+      format.html {redirect_to :back, notice: "Thank you, the tool is returned!"}
+      format.json {render json: @tool}
+    end
   end
 
 
@@ -59,7 +63,7 @@ class ToolsController < ApplicationController
   end
 
   def admin_user
-    redirect_to root_url unless @current_user.admin == true
+    redirect_to root_url unless current_user && current_user.admin == true
   end
 
   def set_tool

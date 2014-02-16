@@ -89,8 +89,9 @@
 </div>
 </div>
 
+<div id="events"><%= render :template => "events/index" %></div>
 
-
-
-  <div id="events"><%= render :template => "events/index" %></div>
+<% if current_user %>
+  <h1 class="center aligned ui header">Tools Library</h1>
   <div id="tools"><%= render :template => "tools/index" %></div>
+<% end %>
