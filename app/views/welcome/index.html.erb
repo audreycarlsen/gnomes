@@ -1,6 +1,5 @@
 <div class="ui inverted page grid masthead segment">
   <div class="column">
-
     <img src="gnome.png" class="ui large image">
     <div class="ui hidden transition information">
       <div class="ui inverted basic right floated segment">RIGHT NOW:
@@ -10,92 +9,100 @@
           <thead>
             <tr>
               <% forecast.each do |day| %>
-              <th><%= day.strftime("%b %e") %></th>
+                <th><%= day.strftime("%b %e") %></th>
               <% end %>
             </tr>
           </thead>
           <tbody>
             <tr>
              <% @weather.forecast.first(5).each do |day| %>
-             <td><%= image_tag "http://icons.wxug.com/i/c/i/#{day.icon}.gif", size: "30"  %> </td>
+                <td><%= image_tag "http://icons.wxug.com/i/c/i/#{day.icon}.gif", size: "30"  %> </td>
              <% end %>
-           </tr>
-           <tr>
-            <% @weather.forecast.first(5).each do |day| %>
-            <td><strong><%= day.high.f %>&deg</strong>/
-              <%= day.low.f %>&deg</td>
-              <% end %>
+            </tr>
+            <tr>
+             <% @weather.forecast.first(5).each do |day| %>
+               <td><strong><%= day.high.f %>&deg</strong>/
+                 <%= day.low.f %>&deg</td>
+             <% end %>
             </tr>
           </tbody>
         </table>
       </div>
-        <h1 class="ui inverted header">
-          Gnome Sweet Gnome
-        </h1>
-        <p>Our community garden description?</p>
-
-        <div class="large basic inverted animated fade ui button">
-          <div class="visible content">Come plant some plants</div>
-          <div class="hidden content">
-            <% if current_user %>
+      <h1 class="ui inverted header">
+        Gnome Sweet Gnome
+      </h1>
+      <p>Our community garden description?</p>
+      <div class="large basic inverted animated fade ui button">
+        <div class="visible content">Come plant some plants</div>
+        <div class="hidden content">
+          <% if current_user %>
             <%= link_to "Sign out", sign_out_path %>
-            <% else %>
+          <% else %>
             <%= link_to "Sign In with Twitter", sign_in_path%>
-            <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div id="news">
-    <div class="ui page grid stackable relaxed feature segment">
-      <div class="row">
-        <div class="column">
-          <h2 class="center aligned ui header">
-            Gnome Gnews
-          </h2>
-        </div>
+<div id="news">
+  <div class="ui page grid stackable relaxed feature segment">
+    <div class="row">
+      <div class="column">
+        <h2 class="center aligned ui header">
+          Gnome Gnews
+        </h2>
       </div>
-      <div class="row">
-        <div class="ui three column center aligned stackable divided grid">
-         <% if @posts %>
-         <% @posts.each do |p| %>
-         <div class="column">
-          <div class="ui icon header">
-            <%= p.title %>
+    </div>
+    <div class="row">
+      <div class="ui three column center aligned stackable divided grid">
+        <% if @posts %>
+          <% @posts.each do |p| %>
+          <div class="column">
+             <div class="ui icon header">
+              <%= p.title %>
+             </div>
+             <p><em><%= time_ago_in_words(p.created_at) %> ago</em></p>
+             <p><%= truncate(p.content, length: 200, omission: '...') %></p>
+             <p><%= link_to "More", post_path(p), class: "ui blue button"%>
+             </p>
           </div>
-          <p><em><%= time_ago_in_words(p.created_at) %> ago</em></p>
-          <p><%= truncate(p.content, length: 200, omission: '...') %></p>
-          <p><%= link_to "More", post_path(p), class: "ui blue button"%>
-          </p>
-        </div>
-        <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
     <div class="row">
       <div class="column">
-       <h1 class="center aligned ui header">
-        <a href="/posts">
-         <div class="ui basic animated button button">
-          <div class="visible content">Read More</div>
-          <div class="hidden content"><i class="right arrow icon"></i></div>
-        </div>
-      </a>
-    </h1>
+        <h1 class="center aligned ui header">
+          <a href="/posts">
+            <div class="ui basic animated button button">
+              <div class="visible content">Read More</div>
+              <div class="hidden content"><i class="right arrow icon"></i></div>
+            </div>
+          </a>
+        </h1>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-</div>
+
 <div id="events">
- <div class="inverted center aligned row ui events">
-        <h1 class="center aligned inverted ui header">
-          Community Events
-        </h1>
-    <%= calendar @events, {class: "ui small collapsing inverted calendar table"} do |event| %>
+  <div class="inverted center aligned row ui events">
+   <h1 class="center aligned inverted ui header">
+     Community Events
+   </h1>
+   <%= calendar @events, {class: "ui small collapsing inverted calendar table"} do |event| %>
     <%= link_to event.title, event_path(event) %></br>
-  <% end %>
+   <% end %>
+  </div>
 </div>
+
+<div id="tools">
+  <div class="center aligned row ui tools">
+    <% if current_user %>
+      <h1 class="center aligned ui header">Tools Library</h1>
+      <%= render :template => "tools/index" %>
+    <% end %>
+  </div>
 </div>
-  <div id="tools"><%= render :template => "tools/index" %></div>

@@ -5,6 +5,57 @@ describe ToolsController do
   let(:default_tool) { create(:tool) }
   let(:valid_attributes) { {title: "rake"} }
 
+  context "if user isn't logged in" do
+    before(:each) do
+      session[:user_id] = nil
+    end
+
+    it 'redirects from GET#index' do
+      get :index
+      expect(response).to redirect_to root_path
+    end
+
+    it 'redirects from GET#new' do
+      get :new
+      expect(response).to redirect_to root_path
+    end
+    
+    it 'redirects from GET#edit' do
+      get :edit, id: default_tool.id
+      expect(response).to redirect_to root_path
+    end
+    
+    it 'redirects from POST#create' do
+      post :create
+      expect(response).to redirect_to root_path
+    end
+
+    it 'redirects from GET#show' do
+      get :show, id: default_tool.id
+      expect(response).to redirect_to root_path
+    end
+
+    it 'redirects from PATCH#update' do
+      patch :update, id: default_tool.id
+      expect(response).to redirect_to root_path
+    end
+    
+    it 'redirects from DELETE#destroy' do
+      delete :destroy, id: default_tool.id
+      expect(response).to redirect_to root_path
+    end
+    
+    it 'redirects from PATCH#reserve_tool' do
+      patch :reserve_tool, id: default_tool.id
+      expect(response).to redirect_to root_path
+    end
+
+    it 'redirects from PATCH#return_tool' do
+      patch :return_tool, id: default_tool.id
+      expect(response).to redirect_to root_path
+    end
+  end
+
   context "if user isn't an admin" do
     let(:user) { create(:user) }
 
