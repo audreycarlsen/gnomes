@@ -8,7 +8,7 @@ $(function() {
       var opposite_button;
 
       if( button.is(".checkout_button") ){
-        opposite_button = "<input class='return_button ui mini red button' type='submit' value='Check In'></input>";
+        opposite_button = "<input class='return_button ui mini red button' type='submit' value='Return'></input>";
       } else {
         opposite_button = "<input class='checkout_button ui mini blue button' type='submit' value='Check Out'></input>";
       }
