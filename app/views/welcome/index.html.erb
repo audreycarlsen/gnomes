@@ -33,7 +33,13 @@
       </h1>
       <p>Our community garden description?</p>
       <div class="large basic inverted animated fade ui button">
-        <div class="visible content">Come plant some plants</div>
+        <div class="visible content">
+          <% if current_user %>
+            Planted all the plants?
+          <% else %>
+            Come plant some plants!
+          <% end %>
+        </div>
         <div class="hidden content">
           <% if current_user %>
             <%= link_to "Sign out", sign_out_path %>
