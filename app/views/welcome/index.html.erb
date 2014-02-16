@@ -52,25 +52,25 @@
     <div class="ui page grid stackable relaxed feature segment">
       <div class="row">
         <div class="column">
-          <h1 class="center aligned ui header">
+          <h2 class="center aligned ui header">
             Gnome Gnews
-          </h1>
+          </h2>
         </div>
       </div>
       <div class="row">
         <div class="ui three column center aligned stackable divided grid">
          <% if @posts %>
-           <% @posts.each do |p| %>
-             <div class="column">
-              <div class="ui icon header">
-                <%= p.title %>
-              </div>
-              <p><em><%= time_ago_in_words(p.created_at) %> ago</em></p>
-              <p><%= truncate(p.content, length: 200, omission: '...') %></p>
-              <p><%= link_to "More", post_path(p), class: "ui blue button"%>
-              </p>
-            </div>
-          <% end %>
+         <% @posts.each do |p| %>
+         <div class="column">
+          <div class="ui icon header">
+            <%= p.title %>
+          </div>
+          <p><em><%= time_ago_in_words(p.created_at) %> ago</em></p>
+          <p><%= truncate(p.content, length: 200, omission: '...') %></p>
+          <p><%= link_to "More", post_path(p), class: "ui blue button"%>
+          </p>
+        </div>
+        <% end %>
         <% end %>
       </div>
     </div>
@@ -88,9 +88,14 @@
 </div>
 </div>
 </div>
-
-
-
-
-  <div id="events"><%= render :template => "events/index" %></div>
+<div id="events">
+ <div class="inverted center aligned row ui events">
+        <h1 class="center aligned inverted ui header">
+          Community Events
+        </h1>
+    <%= calendar @events, {class: "ui small collapsing inverted calendar table"} do |event| %>
+    <%= link_to event.title, event_path(event) %></br>
+  <% end %>
+</div>
+</div>
   <div id="tools"><%= render :template => "tools/index" %></div>
