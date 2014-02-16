@@ -1,6 +1,7 @@
 class ToolsController < ApplicationController
   before_action :admin_user, except: [:index, :show, :reserve_tool, :return_tool]
   before_action :set_tool, only: [:show, :edit, :destroy, :update, :reserve_tool, :return_tool]
+  before_action :authorize
 
   def index
     @tools = Tool.all
@@ -62,7 +63,7 @@ class ToolsController < ApplicationController
   end
 
   def admin_user
-    redirect_to root_url unless @current_user.admin == true
+    redirect_to root_url unless current_user && current_user.admin == true
   end
 
   def set_tool

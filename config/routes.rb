@@ -14,7 +14,7 @@ Gnomes::Application.routes.draw do
 
   get '/auth/twitter',                                    as: 'sign_in'
   get '/sign_out',                 to: 'session#destroy', as: 'sign_out'
-  post '/auth/:provider/callback', to: 'session#create'
+  get '/auth/:provider/callback', to: 'session#create'
   patch '/events/:id/:response'     => "events#rsvp",      as: 'rsvp'
   delete '/events/:id/no'          => "events#rsvp_no",   as: 'rsvp_no'
   patch '/tools/:id/reserve',      to: 'tools#reserve_tool',   as: 'reserve_tool'

@@ -1,5 +1,5 @@
 $(function() {
-  $(".checkin-checkout").on( "click", ".checkout_button, .checkin_button", function() {
+  $(".checkout-return").on( "click", ".checkout_button, .return_button", function() {
 
     var button = $(this);
     var form   = $(this).parents('form');
@@ -8,7 +8,7 @@ $(function() {
       var opposite_button;
 
       if( button.is(".checkout_button") ){
-        opposite_button = "<input class='checkin_button ui mini blue button' type='submit' value='Check In'></input>";
+        opposite_button = "<input class='return_button ui mini red button' type='submit' value='Check In'></input>";
       } else {
         opposite_button = "<input class='checkout_button ui mini blue button' type='submit' value='Check Out'></input>";
       }
