@@ -92,16 +92,18 @@
     </div>
   </div>
 </div>
+</div>
 
 <div id="events">
   <div class="inverted center aligned row ui events">
-   <h1 class="center aligned inverted ui header">
-     Community Events
-   </h1>
-   <%= calendar @events, {class: "ui small collapsing inverted calendar table"} do |event| %>
-    <%= link_to event.title, event_path(event) %></br>
-   <% end %>
+    <h1 class="center aligned inverted ui header">
+      Community Events
+    </h1>
+    <%= calendar @events, {class: "ui small collapsing inverted calendar table"} do |event| %>
+     <%= link_to event.title, event_path(event) %></br>
+    <% end %>
   </div>
+</div>
 </div>
 
 <div id="tools">
