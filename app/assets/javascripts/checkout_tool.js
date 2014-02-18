@@ -4,7 +4,9 @@ $(function() {
     var button = $(this);
     var form   = $(this).parents('form');
 
+
     button.addClass( "disabled" );
+
     button.attr( "disabled", "disabled");
 
     var getOppositeButton = function( button ){
@@ -31,13 +33,16 @@ $(function() {
     $.ajax({
       url: $(this).parents('form').attr("action"),
       type: 'PATCH',
-      dataType: 'json'
+      dataType: 'json',
+      headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
     })
     .done(function(data){
       button.remove();
 
       form.attr("action", "/tools/" + data.id + getFormUrl( button) );
-      
+
       form.append(getOppositeButton( button ));
     })
     .fail(function(){
