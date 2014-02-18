@@ -1,7 +1,7 @@
 <div class="ui inverted page grid masthead segment">
   <div class="column">
     <img src="gnome.png" class="ui large image">
-    <div class="ui hidden transition information">
+    <div class="ui transition information">
       <div class="ui inverted basic right floated segment">RIGHT NOW:
         <%= @weather.current.temperature.f %>&deg<br>
         <%= image_tag "http://icons.wxug.com/i/c/i/#{@weather.current.icon}.gif", size: "30"  %><br><br>
