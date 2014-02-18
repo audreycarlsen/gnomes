@@ -195,13 +195,10 @@ a.next-month, a.previous-month{
 
 .tools {
   padding-top     : 3.5rem;
-  padding-bottom  : 3.5rem;
+  padding-bottom  : 6rem;
   margin          : 0% -2.5%;
   background-color: #E5F818;
-}
-
-.tools table {
- /* width: 60% !important;*/
+  background-image: url(/grass.png);
 }
 
 /*******************************
