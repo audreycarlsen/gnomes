@@ -42,6 +42,7 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'factory_girl_rails'
+  gem 'resque_spec'
 end
 
 gem 'omniauth'
@@ -56,10 +57,6 @@ gem 'simple_calendar'
 gem 'barometer'
 
 gem 'resque'
-
-group :test do
-  gem 'resque_spec'
-end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
