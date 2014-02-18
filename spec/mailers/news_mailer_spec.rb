@@ -1,8 +1,8 @@
 require "spec_helper"
 
 describe NewsMailer do
-  let(:user){ create(:user) }
-  let(:post){ create(:post) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
   let(:mail) { NewsMailer.new_post(post.id, user.id) }
 
   it 'sends mail to user email' do

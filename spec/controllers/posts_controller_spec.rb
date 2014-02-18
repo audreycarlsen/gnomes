@@ -96,21 +96,6 @@ describe PostsController do
           expect(flash[:notice]).to_not be_blank
         end
 
-        # it 'sends an email' do
-        #   without_resque_spec do
-        #     post :create, post: valid_attributes
-        #     expect{ NewsMailer.new_post(assigns(:post).id, user.id).deliver }.to change(ActionMailer::Base.deliveries.count).by(1)
-        #   end
-        # end
-
-        # it "sends to user's email address" do
-        #   without_resque_spec do
-        #     post :create, post: valid_attributes
-        #     NewsMailer.new_post(assigns(:post).id, user.id).deliver
-        #     expect(ActionMailer::Base.deliveries.last).to eq(user.email)
-        #   end
-        # end
-
         it "should have a queue size of 2" do
           post :create, post: valid_attributes
           EmailJob.should have_queue_size_of(2)
