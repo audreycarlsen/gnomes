@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-// require turbolinks
 //= require_tree .
 
 //*************************************
@@ -95,3 +94,9 @@
 
   })
 ;
+//*************************************
+//               EQUAL COLUMNS
+//*************************************
+$(document).ready(function() {
+  $(".calendar").equalHeights(100,300);
+});

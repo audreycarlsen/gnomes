@@ -19,17 +19,17 @@
 html,
 body {
   font-size: 15px;
-  height: 100%;
+  height   : 100%;
 }
 
 body {
-  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family     : "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   background-color: #58CF3D;
-  margin: 0px;
-  padding: 0px;
-  color: #555555;
-  text-rendering: optimizeLegibility;
-  min-width: 320px;
+  margin          : 0px;
+  padding         : 0px;
+  color           : #555555;
+  text-rendering  : optimizeLegibility;
+  min-width       : 320px;
 }
 
 /*******************************
@@ -42,12 +42,17 @@ body {
 
 .ui.header,
 h1,
-h2 {
+{
   font-weight: normal !important;
+}
+
+h2 {
+  text-shadow: 2px 2px 2px #CCCCCC;
 }
 
 h1.ui.header {
   font-size: 3em;
+
 }
 
 h4.ui.header,
@@ -57,19 +62,19 @@ h5.ui.header,
 }
 
 .ui.button {
-  font-weight: normal;
+  font-weight    : normal;
   text-decoration: none;
 }
 
 a {
-  color: #009FDA;
-  text-decoration: none;
+  color             :#CD002C;
+  text-decoration   : none;
   -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
+  transition        : color 0.3s ease;
 }
 
 a:hover {
-  color: #00BAFF;
+  color: #FFFFFF;
 }
 
 p a {
@@ -77,11 +82,126 @@ p a {
 }
 
 #nav {
-
+  padding-top     : 2rem;
+  padding-bottom  : 2rem;
 }
 
 .profile-table {
-  vertical-align:top;
+  vertical-align: top;
+}
+
+table {
+  margin: 0 auto !important;
+}
+
+table th, table td {
+  overflow: auto;
+ }
+
+/*******************************
+          Calendar
+*******************************/
+
+.events {
+  padding-top     : 3.5rem;
+  padding-bottom  : 3.5rem;
+  margin          : 0% -2.5%;
+  background-color: #049CCE;
+}
+
+.events h2 {
+  text-align : center;
+  color      :#FFFFFF;
+  text-shadow: none;
+  font-weight:normal;
+}
+
+td a {
+  text-decoration: none;
+
+}
+
+td a:link, td a:visited {
+  color: #FFFFFF;
+}
+
+td a:hover {
+  color: #CD002C;
+}
+
+a.next-month, a.previous-month{
+  padding: 0px 5px;
+}
+
+@media only screen and (min-width: 48.063em) {
+
+  .calendar {
+    width: 80% !important;
+  }
+
+  .calendar tr {
+    display: table-row;
+  }
+
+  .calendar th, .calendar td {
+    display       : table-cell !important;
+    margin        : 0;
+    width         : 14.2857%;
+    padding       : 0.4166em;/*10*/
+    border        : 1px solid #babcbf;
+    vertical-align: top;
+  }
+
+  .calendar td .day {
+    display    : block;
+    float      : right;
+    margin     : 0;
+    font-weight: normal;
+  }
+
+  .calendar td .day:before {
+    display: none;
+  }
+
+  .calendar td .suffix {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 40em) { /*640*/
+
+  .calendar th span {
+    display: inline;
+  }
+}
+
+@media only screen and (min-width: 40em) and (min-height: 20em) {
+
+  .calendar td {
+    height: 2.5em;/*30*/
+  }
+}
+
+@media only screen and (min-width: 40em) and (min-height: 40em) {
+
+  .calendar td {
+    height: 6.25em;/*75*/
+  }
+}
+
+/*******************************
+            TOOLS
+*******************************/
+
+.tools {
+  padding-top     : 3.5rem;
+  padding-bottom  : 3.5rem;
+  margin          : 0% -2.5%;
+  background-color: #E5F818;
+}
+
+.tools table {
+ /* width: 60% !important;*/
 }
 
 /*******************************
@@ -93,20 +213,19 @@ p a {
 }
 
 .ui.page.grid.segment {
-  padding-top: 3.5rem;
+  padding-top   : 3.5rem;
   padding-bottom: 3.5rem;
 
 }
 
 .masthead.segment {
-  background-image: url(bg.jpg);
   -webkit-background-size: cover;
-  background-size: cover;
-  margin: 0em;
-  padding-top: 4rem;
-  overflow: hidden;
-  -webkit-box-shadow: 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
-  box-shadow: 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
+  background-size        : cover;
+  margin                 : 0em;
+  padding-top            : 4rem;
+  overflow               : hidden;
+  -webkit-box-shadow     : 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
+  box-shadow             : 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
 }
 
 .masthead.segment .column {
@@ -119,7 +238,7 @@ p a {
 
 .masthead.segment .information p {
   max-width: 600px;
-  margin: 0em 0px 2em 0em;
+  margin   : 0em 0px 2em 0em;
   font-size: 1.2em;
 
 }
@@ -130,8 +249,8 @@ p a {
 
 .masthead.segment .image {
   position: absolute;
-  left: 0%;
-  bottom: -140px;
+  left    : 0%;
+  bottom  : -140px;
 }
 
 .overview .divided.grid .header + p {
@@ -140,7 +259,7 @@ p a {
 
 .ui.shape .icon,
 .link.list .icon {
-  margin: 0em;
+  margin : 0em;
   padding: 0em;
 }
 
@@ -154,9 +273,9 @@ p a {
 
 /* Mobile Only */
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width : 769px) {
   .ui.page.grid.segment {
-    padding-top: 2rem;
+    padding-top   : 2rem;
     padding-bottom: 2rem;
   }
 
@@ -174,7 +293,7 @@ p a {
 
   .masthead.segment {
     -webkit-background-size: auto;
-    background-size: auto;
+    background-size        : auto;
   }
 
   .masthead.segment .information {
@@ -182,8 +301,8 @@ p a {
   }
 
   .masthead.segment .image {
-    bottom: -65px;
-    width: 150px;
+    bottom: -75px;
+    width : 150px;
   }
 
   .masthead.segment .button {
