@@ -139,9 +139,11 @@ background-color: #58CF3D;;
     <div class="events_calendar">
       <%= render 'calendar' %>
     </div>
-     <h1 class="center aligned inverted ui header">
-    <%= button_to "Add Event", new_event_path, class: "ui inverted button", method: :get %>
-  </h1>
+    <% unless current_user.nil? %>
+       <h1 class="center aligned inverted ui header">
+      <%= button_to "Add Event", new_event_path, class: "ui inverted button", method: :get %>
+      </h1>
+    <% end %>
   </div>
 </div>
 
