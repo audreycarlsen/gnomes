@@ -10,21 +10,16 @@ describe ToolsController do
       session[:user_id] = nil
     end
 
-    it 'redirects from GET#index' do
-      get :index
-      expect(response).to redirect_to root_path
-    end
-
     it 'redirects from GET#new' do
       get :new
       expect(response).to redirect_to root_path
     end
-    
+
     it 'redirects from GET#edit' do
       get :edit, id: default_tool.id
       expect(response).to redirect_to root_path
     end
-    
+
     it 'redirects from POST#create' do
       post :create
       expect(response).to redirect_to root_path
@@ -39,12 +34,12 @@ describe ToolsController do
       patch :update, id: default_tool.id
       expect(response).to redirect_to root_path
     end
-    
+
     it 'redirects from DELETE#destroy' do
       delete :destroy, id: default_tool.id
       expect(response).to redirect_to root_path
     end
-    
+
     it 'redirects from PATCH#reserve_tool' do
       patch :reserve_tool, id: default_tool.id
       expect(response).to redirect_to root_path
@@ -62,11 +57,6 @@ describe ToolsController do
     before(:each) do
       session[:user_id] = user.id
       request.env["HTTP_REFERER"] = "where_i_came_from"
-    end
-
-    it 'GET#index is successful' do
-      get :index
-      expect(response).to be_successful
     end
 
     it 'redirects from GET#new' do

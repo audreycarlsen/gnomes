@@ -10,11 +10,6 @@ describe EventsController do
       session[:user_id] = nil
     end
 
-    it 'GET#index is successful' do
-      get :index
-      expect(response).to be_successful
-    end
-
     it 'redirects from GET#new' do
       get :new
       expect(response).to redirect_to root_path
@@ -68,16 +63,9 @@ describe EventsController do
       end
     end
 
-    describe "GET 'index'" do
-      it "is successful" do
-        get :index
-        expect(response).to be_successful
-      end
-    end
-
     describe "POST 'create'" do
       context "with valid attributes" do
-        
+
         it "is a redirect" do
           post :create, event: valid_attributes
           expect(response.status).to eq 302
@@ -135,7 +123,7 @@ describe EventsController do
 
     describe "DELETE 'destroy'" do
       let!(:default_event) { create(:event) }
-      
+
       it "is a redirect" do
         delete :destroy, id: default_event.id
         expect(response).to redirect_to events_path
