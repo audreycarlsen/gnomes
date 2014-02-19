@@ -2,10 +2,14 @@ require 'resque/server'
 
 Gnomes::Application.routes.draw do
 
-  get "welcome/index"
   mount Resque::Server, :at => "/resque"
 
   root 'welcome#index'
+
+  get   "welcome/index"
+  get   'admin',         to: 'admin#index',   as: 'admin'
+  patch 'admin/:id/create',  to: 'admin#create',  as: 'create_admin'
+  patch 'admin/:id/destroy', to: 'admin#destroy', as: 'destroy_admin'
 
   resources :events
   resources :users

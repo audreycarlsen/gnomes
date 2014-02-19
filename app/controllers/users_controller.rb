@@ -18,6 +18,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  def destroy
+    @user.destroy
+    redirect_to :back
+  end
+
   private
 
   def user_params

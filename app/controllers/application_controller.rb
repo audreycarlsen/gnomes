@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to root_path, notice: 'Please log in!' if current_user.nil?
   end
+
+  def admin_user
+    redirect_to root_url unless @current_user.admin == true
+  end
 end

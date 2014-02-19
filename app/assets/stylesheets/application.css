@@ -73,7 +73,7 @@ a {
 }
 
 a:hover {
-  color: #FFFFFF;
+  color: #00731E;
 }
 
 p a {
@@ -99,6 +99,14 @@ table th, table td {
 
  #yellow{
   color: #E5F818;
+ }
+
+ .centered{
+  text-align: center;
+ }
+
+ .smallish{
+  font-size: 12px;
  }
 
 /*******************************
