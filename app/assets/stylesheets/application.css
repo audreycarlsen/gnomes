@@ -101,6 +101,11 @@ table th, table td {
   color: #E5F818;
  }
 
+#events .button {
+  background-color: #0384AE;
+  color: #FFFFFF;
+  border-color: gray;
+}
  .centered{
   text-align: center;
  }
