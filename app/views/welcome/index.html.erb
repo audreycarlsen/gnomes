@@ -95,6 +95,34 @@ background-color: #58CF3D;;
         </h1>
       </div>
     </div>
+
+    <% if current_user && current_user.email.nil? %>
+      <div class="row">
+        <div class="column">
+          <div class="center aligned ui basic segment">
+            <div class="ui horizontal icon divider">
+              <i class="circular bug icon"></i>
+            </div>
+            <h4 class="center aligned ui header">
+              Want to receive Gnome Gnews updates?
+            </h4>
+            <%= link_to "Give us your email address!", edit_user_path(current_user.id) %>
+
+            <div class = "ui form" id="email-me">
+              <%= form_for @user do |f| %>
+                <div class="inline field">
+                  <%= f.text_field :email %>
+                  <%= f.submit "Spam me!", class: "ui mini blue button" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% elsif current_user.nil? %>
+      <h4 class="center aligned ui header">Sign in to receive Gnome Gnews updates!</h4>
+    <% end %>
+
   </div>
 </div>
 
@@ -111,9 +139,8 @@ background-color: #58CF3D;;
 
 <div id="tools">
   <div class="center aligned row ui tools">
-    <% if current_user %>
-      <h1 class="center aligned ui header">Tools Library</h1>
-      <%= render :template => "tools/index" %>
-    <% end %>
+    <h1 class="center aligned ui header">Tools Library</h1>
+    <% if current_user.nil? %><h5 class="center aligned ui header">(Please sign in to use the tools library.)</h5><% end %>
+    <%= render :template => "tools/index" %>
   </div>
 </div>

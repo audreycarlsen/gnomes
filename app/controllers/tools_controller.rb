@@ -1,7 +1,7 @@
 class ToolsController < ApplicationController
   before_action :admin_user, except: [:index, :show, :reserve_tool, :return_tool]
   before_action :set_tool, only: [:show, :edit, :destroy, :update, :reserve_tool, :return_tool]
-  before_action :authorize
+  before_action :authorize, except: [:index]
 
   def index
     @tools = Tool.all
