@@ -137,8 +137,11 @@ background-color: #58CF3D;;
       Community Events
     </h1>
     <div class="events_calendar">
-  <%= render 'calendar' %>
-</div>
+      <%= render 'calendar' %>
+    </div>
+     <h1 class="center aligned inverted ui header">
+    <%= button_to "Add Event", new_event_path, class: "ui inverted button", method: :get %>
+  </h1>
   </div>
 </div>
 

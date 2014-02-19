@@ -39,7 +39,6 @@
 
 $(document).ready(function() {
 
-alert("it works");
   $(".events_calendar").on("click", ".next-month, .previous-month", function() {
 
   $.ajax({
@@ -52,9 +51,9 @@ alert("it works");
     error: function(xhr,textStatus, errorThrown) {
 
     }
-    });
-  return false;
   });
 
+  return false;
   });
+});
 
