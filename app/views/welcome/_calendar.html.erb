@@ -1,0 +1,3 @@
+<%= calendar @events, {class: "ui small collapsing inverted calendar table"} do |event| %>
+  <%= link_to event.title, event_path(event) %></br>
+<% end %>

@@ -136,9 +136,9 @@ background-color: #58CF3D;;
     <h1 class="center aligned inverted ui header">
       Community Events
     </h1>
-    <%= calendar @events, {class: "ui small collapsing inverted calendar table"} do |event| %>
-     <%= link_to event.title, event_path(event) %></br>
-    <% end %>
+    <div class="events_calendar">
+  <%= render 'calendar' %>
+</div>
   </div>
 </div>
 
