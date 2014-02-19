@@ -146,6 +146,27 @@ background-color: #58CF3D;;
   <div class="center aligned row ui tools">
     <h1 class="center aligned ui header">Tools Library</h1>
     <% if current_user.nil? %><h5 class="center aligned ui header">(Please sign in to use the tools library.)</h5><% end %>
-    <%= render :template => "tools/index" %>
+    <table class="ui collapsing basic table">
+      <% if @tools %>
+        <tbody>
+          <% @tools.sort.each do |t| %>
+            <tr>
+              <td><%= t.title %></td>
+              <% if current_user %>
+                <td class="checkout-return">
+                  <% if t.user_id.nil? %>
+                    <%= button_to "Check Out", reserve_tool_path(t), method: :patch, class: "checkout_button ui mini green button" %>
+                  <% elsif t.user_id == current_user.id %>
+                    <%= button_to "    Return    ", return_tool_path(t), method: :patch, class: "return_button ui mini red button" %>
+                  <% else %>
+                    <em>Checked out by <%= t.user.username %></em>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
   </div>
 </div>

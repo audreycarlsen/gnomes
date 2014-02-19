@@ -12,10 +12,6 @@ class EventsController < ApplicationController
   def edit
   end
 
-  def index
-    @events = Event.all
-  end
-
   def create
     @event           = Event.new(event_params)
     @event[:user_id] = session[:user_id]
