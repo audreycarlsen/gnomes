@@ -124,6 +124,7 @@ table th, table td {
   #event_form {
     width: 100% !important;
   }
+}
 
 /*******************************
           Calendar
@@ -298,6 +299,11 @@ a.next-month, a.previous-month{
 /* Mobile Only */
 
 @media only screen and (max-width : 769px) {
+
+   .events, .tools {
+    margin: auto !important;
+  }
+
   .ui.page.grid.segment {
     padding-top   : 2rem;
     padding-bottom: 2rem;
