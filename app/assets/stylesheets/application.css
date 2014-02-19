@@ -29,6 +29,7 @@ body {
   color           : #555555;
   text-rendering  : optimizeLegibility;
   min-width       : 320px;
+  background-color: #FAFAFA;
 }
 
 /*******************************
@@ -119,11 +120,26 @@ table th, table td {
   margin: 0 auto;
  }
 
+ .news {
+  width: 70%;
+  margin: auto;
+  text-align: justify;
+}
+
  @media only screen and (max-width: 40em) {
 
   #event_form {
     width: 100% !important;
   }
+
+  .news {
+    width: 94%;
+  }
+}
+
+.content {
+  text-align: justify;
+  padding: 2em 0;
 }
 
 /*******************************
