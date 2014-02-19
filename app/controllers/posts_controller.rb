@@ -49,10 +49,6 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content)
   end
 
-  def admin_user
-    redirect_to root_url unless @current_user.admin == true
-  end
-
   def set_post
     @post = Post.find(params[:id])
   end
