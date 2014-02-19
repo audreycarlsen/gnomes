@@ -1,24 +1,27 @@
-<h1>WELCOME TO UR PROFILE</h1>
+<div class="padded">
+  <%= image_tag @user.avatar_url, class: 'rounded ui image' %>
+  <h2 class="ui header"><%= @user.username %></h2>
+  <% if @user.email %>
+    <%= @user.email %>
+  <% end %>
+  <br>
+  <% if @user.phone %>
+    <%= @user.phone %>
+  <% end %>
 
-<table>
-  <tr>
-    <td class="profile-table"><%= image_tag @user.avatar_url, class: 'rounded ui image' %></td>
-    <td class="profile-table">
-      <h2><%= @user.username %></h2>
-      <% if @user.email %>
-        <%= @user.email %>
-      <% end %>
-      <br>
-      <% if @user.phone %>
-        <%= @user.phone %>
-      <% end %>
-    </td>
-  </tr>
-</table>
+  <div class="ui green segment">
+    <h4 class="ui header">My Tools</h4>
+    <% @user.tools.each do |tool| %>
+      <p><%= tool.title %><br>
+      <em>Checked out <%= time_ago_in_words(tool.updated_at) %> ago</em></p>
+    <% end %>
+  </div>
 
-Reserved Tools:
-<% @user.tools.each do |tool| %>
-  <%= tool.title %><br>
-  <%= time_ago_in_words(tool.updated_at) %> ago
-  <%= button_to "Return", return_tool_path(tool), method: :patch %>
-<% end %>
+  <div class="ui green segment">
+    <h4 class="ui header">My Tools</h4>
+    <% @user.tools.each do |tool| %>
+      <p><%= tool.title %><br>
+      <em>Checked out <%= time_ago_in_words(tool.updated_at) %> ago</em></p>
+    <% end %>
+  </div>
+</div>

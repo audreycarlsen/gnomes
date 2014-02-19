@@ -114,6 +114,10 @@ table th, table td {
   font-size: 12px;
  }
 
+ .padded {
+  padding: 25px;
+ }
+
  #event_form {
   width: 60%;
   margin: 0 auto;
