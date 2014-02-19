@@ -1,0 +1,58 @@
+<h3 class="center aligned ui header">News</h3>
+  <div class='centered smallish'><em>Write a new blog post.</em></div>
+
+  <table class="ui collapsing basic table">
+    <tr><td><%= render 'posts/form' %></tr></td>
+  </table>
+
+<h3 class="center aligned ui header">Tools</h3>
+  <div class='centered smallish'><em>Add a tool.</em></div>
+    <table class="ui collapsing basic table">
+      <tr><td><%= render 'tools/form' %></tr></td>
+    </table>
+
+  <div class='centered smallish'><em>Manage the tool library.</em></div>
+    <table class="ui collapsing basic table">
+      <% @tools.sort.each do |tool| %>
+        <tr>
+          <td><%= tool.title %></td>
+          <td><%= button_to "Remove", tool_path(tool.id), method: :delete, class: "ui mini red button" %></td>
+        </tr>
+      <% end %>
+    </table>
+
+<h3 class="center aligned ui header">Users</h3>
+  <div class='centered smallish'><em>Manage user accounts.</em></div>
+
+  <table class="ui collapsing basic table">
+    <% @users.sort.each do |user| %>
+      <% unless user == current_user %>
+        <tr>
+          <td>
+            <% if user.admin == true %>
+              <i class="blue star icon"></i>
+            <% end %>
+          </td>
+          <td><%= image_tag user.avatar_url, class: 'rounded ui image' %></td>
+          <td><strong><%= user.username %></strong><br>
+            <% if user.email %>
+              <%= user.email %><br>
+            <% end %>
+            <% if user.phone %>
+              <%= user.phone %>
+            <% end %>
+          </td>
+          <td>
+            <% if user.admin == true %>
+              <%= button_to "Remove Admin", destroy_admin_path(user.id), method: :patch, class: "ui mini blue button" %></td>
+            <% else %>
+              <%= button_to "Create Admin", create_admin_path(user.id), method: :patch, class: "ui mini green button" %></td>
+            <% end %>
+          <td>
+            <% unless user.admin == true %>
+              <%= button_to "Delete User", user_path(user.id), method: :delete, class: "ui mini red button" %></td>
+            <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>

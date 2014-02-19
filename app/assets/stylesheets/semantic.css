@@ -5862,12 +5862,12 @@ i.massive.basic.icon {
 
 .ui.mini.buttons .button,
 .ui.mini.button {
-  padding: 0.6em 0.8em;
+  padding: 0.4em 0.5em;
 }
 
 .ui.mini.icon.buttons .button,
 .ui.mini.buttons .icon.button {
-  padding: 0.6em 0.6em;
+  padding: 0.4em 0.4em;
 }
 
 .ui.tiny.buttons .button,

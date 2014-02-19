@@ -13,7 +13,7 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     if @tool.save
-      redirect_to tool_path(@tool), notice: '#{@tool.title} has been successfully added to the toolset!'
+      redirect_to :back
     else
       render :new
     end
@@ -32,7 +32,7 @@ class ToolsController < ApplicationController
 
   def destroy
      @tool.destroy
-     redirect_to tools_path
+     redirect_to :back
   end
 
    def reserve_tool

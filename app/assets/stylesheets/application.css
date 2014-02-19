@@ -73,7 +73,7 @@ a {
 }
 
 a:hover {
-  color: #FFFFFF;
+  color: #00731E;
 }
 
 p a {
@@ -106,6 +106,14 @@ table th, table td {
   color: #FFFFFF;
   border-color: gray;
 }
+ .centered{
+  text-align: center;
+ }
+
+ .smallish{
+  font-size: 12px;
+ }
+
 /*******************************
           Calendar
 *******************************/
