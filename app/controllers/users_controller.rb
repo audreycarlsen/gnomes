@@ -6,7 +6,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.json { head :no_content }
+      end
     else
       render :edit
     end
