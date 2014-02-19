@@ -119,10 +119,19 @@ table th, table td {
   margin: 0 auto;
  }
 
+ .news {
+  width: 70%;
+  margin: auto;
+}
+
  @media only screen and (max-width: 40em) {
 
   #event_form {
     width: 100% !important;
+  }
+
+  .news {
+    width: 94%;
   }
 }
 
