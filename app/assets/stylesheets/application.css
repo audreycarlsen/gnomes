@@ -101,6 +101,14 @@ table th, table td {
   color: #E5F818;
  }
 
+ .centered{
+  text-align: center;
+ }
+
+ .smallish{
+  font-size: 12px;
+ }
+
 /*******************************
           Calendar
 *******************************/

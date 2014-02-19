@@ -3,6 +3,9 @@ class AdminController < ApplicationController
 
   def index
     @users = User.all
+    @post = Post.new
+    @tool = Tool.new
+    @tools = Tool.all
   end
 
   def create
