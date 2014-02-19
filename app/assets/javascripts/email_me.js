@@ -1,23 +1,35 @@
 $(function() {
-  $(".checkout-return").on( "click", ".checkout_button, .return_button", function() {
+  $(".email-me").on( "click", function() {
+
+    $(this).toggle();
+    $("#email_form").toggle();
+
+    return false;
+  });
+});
+
+$(function() {
+  $("#submit_button").on( "click", function() {
 
     $.ajax({
       url: $(this).parents('form').attr("action"),
       type: 'PATCH',
       dataType: 'json',
+      data: {
+        user: {
+          email: $("#user_email").val()
+        }
+      },
       headers: {
       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       }
     })
     .done(function(data){
-      button.remove();
-
-      form.attr("action", "/tools/" + data.id + getFormUrl( button) );
-
-      form.append(getOppositeButton( button ));
+      $("#email_form").toggle();
+      $("#email_form_congrats").toggle();
     })
     .fail(function(){
-      alert("Something has gone horribly wrong.");
+      $("#email_form_uhoh").toggle();
     });
     return false;
   });

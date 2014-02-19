@@ -4,7 +4,6 @@ $(function() {
     var button = $(this);
     var form   = $(this).parents('form');
 
-
     button.addClass( "disabled" );
 
     button.attr( "disabled", "disabled");
