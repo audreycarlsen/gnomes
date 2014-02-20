@@ -7,12 +7,13 @@
           <%= p.title %>
         </h4>
         <p><em><%= time_ago_in_words(p.created_at) %> ago</em></p>
-        <p><%= truncate(p.content, length: 400, omission: '...') %></p>
+        <p><%= truncate(p.content, length: 500, omission: '...') %></p>
         <p><%= link_to "Read Post", post_path(p)%><i class="right red arrow icon"></i>
         </p>
       </div>
     <% end %>
   <% end %>
+  <h4 class="center aligned ui header"><%= will_paginate @posts %></h4>
 </div>
 
 
