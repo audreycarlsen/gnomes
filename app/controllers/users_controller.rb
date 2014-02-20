@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
+  before_action :valid_user, only: [:show]
 
   def edit
   end
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @events_users = EventsUser.where(user_id: current_user.id)
   end
 
   def destroy
@@ -31,5 +33,11 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def valid_user
+    unless current_user && current_user == @user
+      redirect_to root_path
+    end
   end
 end

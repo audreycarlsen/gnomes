@@ -109,10 +109,20 @@ table th, table td {
 }
  .centered{
   text-align: center;
+  margin: 0 auto !important;
  }
 
  .smallish{
   font-size: 12px;
+ }
+
+ .padded {
+  padding: 25px;
+  margin: 0 auto !important;
+ }
+
+ .not_padded {
+  padding: 0 !important;
  }
 
  #event_form {
@@ -124,6 +134,10 @@ table th, table td {
   width: 70%;
   margin: auto;
   text-align: justify;
+}
+
+.events_div {
+  display: inline-block;
 }
 
  @media only screen and (max-width: 40em) {
@@ -140,6 +154,10 @@ table th, table td {
 .content {
   text-align: justify;
   padding: 2em 0;
+}
+
+.centered-image {
+  margin: 0 auto !important;
 }
 
 /*******************************
