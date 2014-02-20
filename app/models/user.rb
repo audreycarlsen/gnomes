@@ -6,6 +6,16 @@ class User < ActiveRecord::Base
   validates :uid, presence: true, uniqueness: true
   has_many :tools
 
+  has_many :response_yes, through: :events_users,
+          :class_name => "Event",
+          :source => :event,
+          :conditions => ['events_users.response = ?',"yes"]
+
+has_many  :response_maybe, through: :events_users,
+          :class_name => "Event",
+          :source => :event,
+          :conditions => ['events_users.response = ?',"maybe"]
+
   def self.find_or_create_from_omniauth(auth_hash)
     user = User.find_by(uid: auth_hash["uid"].to_s) || User.create_from_omniauth(auth_hash)
     return user

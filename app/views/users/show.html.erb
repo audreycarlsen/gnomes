@@ -25,25 +25,19 @@
         <div class="ui two column grid stackable">
           <div class="column">
             <h5 class="ui header">Going:</h5>
-            <% @events_users.each do |eventuser| %>
-              <% if eventuser.response == "yes" %>
-                <p><%= link_to eventuser.event.title, event_path(eventuser.event) %><br>
-                <%= eventuser.event.date.strftime("%b %e, %l:%M %p") %></p>
-              <% end %>
+            <% @user.response_yes.each do |event| %>
+              <p><%= link_to event.title, event_path(event) %><br>
+                 <%= event.date.strftime("%b %e, %l:%M %p") %></p>
             <% end %>
           </div>
-        
+
           <div class="column">
             <h5 class="ui header">Maybe Going:</h5>
-            <% @events_users.each do |eventuser| %>
-              <% if eventuser.response == "maybe" %>
-                <p><%= link_to eventuser.event.title, event_path(eventuser.event) %><br>
-                <%= eventuser.event.date.strftime("%b %e, %l:%M %p") %></p>
-              <% end %>
+           <% @user.response_maybe.each do |event| %>
+              <p><%= link_to event.title, event_path(event) %><br>
+                 <%= event.date.strftime("%b %e, %l:%M %p") %></p>
             <% end %>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
