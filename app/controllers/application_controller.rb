@@ -26,4 +26,10 @@ class ApplicationController < ActionController::Base
   def admin_user
     redirect_to root_url unless @current_user.admin == true
   end
+
+  def set_up_admin_index
+    @users = User.all
+    @tool = Tool.new
+    @tools = Tool.all
+  end
 end

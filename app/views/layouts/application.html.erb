@@ -27,7 +27,7 @@
       <% if current_user %>
         <%= link_to "Profile", user_path(current_user.id), class: "item" %>
       <% end %>
-      <%= link_to "News", "/#news", class: "item"  %>
+      <%= link_to "News", posts_path, class: "item"  %>
       <%= link_to "Events", "/#events", class: "item"  %>
       <%= link_to "Tools", "/#tools", class: "item"  %>
       <% if current_user && current_user.admin == true %>
