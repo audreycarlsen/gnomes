@@ -1,24 +1,49 @@
-<h1>WELCOME TO UR PROFILE</h1>
+<div class="padded">
+  <div class="centered">
+      <%= image_tag @user.avatar_url, class: 'rounded ui image' %>
+    <h2 class="ui header not_padded"><%= @user.username %></h2>
+    <p><% if @user.email %>
+      <em><%= @user.email %></em>
+    <% end %></p>
+  </div>
 
-<table>
-  <tr>
-    <td class="profile-table"><%= image_tag @user.avatar_url, class: 'rounded ui image' %></td>
-    <td class="profile-table">
-      <h2><%= @user.username %></h2>
-      <% if @user.email %>
-        <%= @user.email %>
-      <% end %>
-      <br>
-      <% if @user.phone %>
-        <%= @user.phone %>
-      <% end %>
-    </td>
-  </tr>
-</table>
+  <div class="ui two column grid stackable">
+    <div class="column">
+      <div class="ui green segment">
+        <h4 class="ui header">My Tools</h4>
+        <% @user.tools.sort.each do |tool| %>
+          <p><%= tool.title %><br>
+          <em>Checked out <%= time_ago_in_words(tool.updated_at) %> ago</em></p>
+        <% end %>
+      </div>
+    </div>
 
-Reserved Tools:
-<% @user.tools.each do |tool| %>
-  <%= tool.title %><br>
-  <%= time_ago_in_words(tool.updated_at) %> ago
-  <%= button_to "Return", return_tool_path(tool), method: :patch %>
-<% end %>
+    <div class="column">
+      <div class="ui blue segment">
+        <h4 class="ui header">My Events</h4>
+
+        <div class="ui two column grid stackable">
+          <div class="column">
+            <h5 class="ui header">Going:</h5>
+            <% @events_users.each do |eventuser| %>
+              <% if eventuser.response == "yes" %>
+                <p><%= link_to eventuser.event.title, event_path(eventuser.event) %><br>
+                <%= eventuser.event.date.strftime("%b %e, %l:%M %p") %></p>
+              <% end %>
+            <% end %>
+          </div>
+        
+          <div class="column">
+            <h5 class="ui header">Maybe Going:</h5>
+            <% @events_users.each do |eventuser| %>
+              <% if eventuser.response == "maybe" %>
+                <p><%= link_to eventuser.event.title, event_path(eventuser.event) %><br>
+                <%= eventuser.event.date.strftime("%b %e, %l:%M %p") %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
