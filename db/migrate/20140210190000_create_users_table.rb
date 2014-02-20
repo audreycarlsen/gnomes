@@ -1,6 +1,6 @@
-class CreateUsersTable < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :users_tables do |t|
+    create_table :users do |t|
       t.string   "username"
       t.boolean  "admin"
       t.timestamps
