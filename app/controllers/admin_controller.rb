@@ -2,10 +2,8 @@ class AdminController < ApplicationController
   before_action :admin_user
 
   def index
-    @users = User.all
+    set_up_admin_index
     @post = Post.new
-    @tool = Tool.new
-    @tools = Tool.all
   end
 
   def create

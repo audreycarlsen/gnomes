@@ -74,7 +74,7 @@ a {
 }
 
 a:hover {
-  color: #00731E;
+  color: skyblue;
 }
 
 p a {
@@ -139,6 +139,7 @@ table th, table td {
 .events_div {
   display: inline-block;
 }
+
 
  @media only screen and (max-width: 40em) {
 

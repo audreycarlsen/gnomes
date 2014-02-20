@@ -10,7 +10,7 @@
   <div class="ui two column grid stackable">
     <div class="column">
       <div class="ui green segment">
-        <h4 class="ui header">My Tools</h4>
+        <h3 class="ui header">My Tools</h3>
         <% @user.tools.sort.each do |tool| %>
           <p><%= tool.title %><br>
           <em>Checked out <%= time_ago_in_words(tool.updated_at) %> ago</em></p>
@@ -20,22 +20,25 @@
 
     <div class="column">
       <div class="ui blue segment">
-        <h4 class="ui header">My Events</h4>
-
+        <h3 class="ui header">My Events</h3>
         <div class="ui two column grid stackable">
           <div class="column">
             <h5 class="ui header">Going:</h5>
-            <% @user.response_yes.each do |event| %>
+            <% @user.response_yes.order("date ASC").each do |event| %>
+              <% if event.date > Time.now %>
               <p><%= link_to event.title, event_path(event) %><br>
                  <%= event.date.strftime("%b %e, %l:%M %p") %></p>
+              <% end %>
             <% end %>
           </div>
 
           <div class="column">
             <h5 class="ui header">Maybe Going:</h5>
            <% @user.response_maybe.each do |event| %>
+              <% if event.date > Time.now %>
               <p><%= link_to event.title, event_path(event) %><br>
                  <%= event.date.strftime("%b %e, %l:%M %p") %></p>
+              <% end %>
             <% end %>
           </div>
         </div>
