@@ -151,7 +151,7 @@ background-color: #58CF3D;;
   <div class="center aligned row ui tools">
     <h1 class="center aligned ui header">Tools Library</h1>
     <% if current_user.nil? %><h5 class="center aligned ui header">(Please sign in to use the tools library.)</h5><% end %>
-    <table class="ui collapsing basic table tools">
+    <table class="ui collapsing basic table">
       <% if @tools %>
         <tbody>
           <% @tools.sort.each do |t| %>
