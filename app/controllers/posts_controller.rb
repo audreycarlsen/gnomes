@@ -22,9 +22,10 @@ class PostsController < ApplicationController
           Resque.enqueue(EmailJob, @post.id, user.id)
         end
       end
-      redirect_to root_path, notice: 'Post has been successfully created!'
+      redirect_to post_path(@post.id), notice: 'Post has been successfully created!'
     else
-      render :new
+      set_up_admin_index
+      render "admin/index"
     end
   end
 
