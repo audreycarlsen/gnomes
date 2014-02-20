@@ -3,8 +3,16 @@
     <%= @post.title %>
   </h4>
   <p><em><%= time_ago_in_words(@post.created_at) %> ago.</em></p>
-  <div class="content">
+  <div class="post_content">
     <%= @post.content %>
   </div>
+  <h4 class="ui centered header">
+    <% if @post.previous %>
+    <%= link_to "< Previous", @post.previous %> |
+    <% end %>
+   <% if @post.next %>
+    <%=  link_to "Next >", @post.next %>
+    <% end %>
+  </h4>
   <div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
 </div>
