@@ -59,11 +59,4 @@ ActiveRecord::Schema.define(version: 20140212212130) do
     t.string   "avatar_url"
   end
 
-  create_table "users_tables", force: true do |t|
-    t.string   "username"
-    t.boolean  "admin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end

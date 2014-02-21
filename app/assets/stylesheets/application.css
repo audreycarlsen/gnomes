@@ -157,8 +157,8 @@ table th, table td {
   padding: 2em 0;
 }
 
-.centered-image {
-  margin: 0 auto !important;
+.centered img {
+ margin: 0 auto;
 }
 
 /*******************************
@@ -344,13 +344,13 @@ a.next-month, a.previous-month{
     padding-bottom: 2rem;
   }
 
-  .menu .right.menu > .item {
+/*  .menu .right.menu > .item {
     display: none;
   }
 
   .menu .right.menu > .mobile.item {
     display: block;
-  }
+  }*/
 
   h1.ui.header {
     font-size: 1.5em;
