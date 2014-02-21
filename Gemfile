@@ -56,11 +56,13 @@ gem 'simple_calendar'
 
 gem 'barometer'
 
-gem 'resque'
+gem 'resque', '~> 1.23.0'
 
 gem 'will_paginate'
 
 gem 'rails_12factor'
+
+gem 'heroku_resque_autoscaler'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

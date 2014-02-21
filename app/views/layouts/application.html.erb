@@ -17,11 +17,19 @@
 <body id="home">
   <div id="nav">
    <div class="secondary pointing ui menu">
-    <% if current_user %>
-      <div class="header item">Signed in as <%= current_user.username %> <% if current_user.admin == true %>(<em>admin</em>)<% end %></div>
-    <% else %>
-      <div class="header item">Greetings, stranger!</div>
-    <% end %>
+    <div class="left menu">
+      <% if current_user %>
+        <p class="item">
+          Signed in as <%= current_user.username %> <% if current_user.admin == true %>(<em>admin</em>)<% end %>
+        </p>
+        <%= link_to "Sign Out", sign_out_path, class: "item"  %>
+      <% else %>
+        <p class="item">
+          Greetings, stranger!
+        </p>
+        <%= link_to "Sign In with Twitter", sign_in_path, class: "item"  %>
+      <% end %>
+    </div>
     <div class="right menu">
       <%= link_to "Home", root_path, class: "item" %>
       <% if current_user %>
