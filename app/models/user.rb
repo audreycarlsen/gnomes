@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :events, through: :events_users
-  has_many :events_users
+  has_many :events_users, :dependent => :destroy
   validates :username, presence: true, uniqueness: true
   validates :admin, inclusion: { in: [true, false] }
   validates :uid, presence: true, uniqueness: true
