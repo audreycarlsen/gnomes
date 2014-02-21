@@ -60,6 +60,8 @@ gem 'resque'
 
 gem 'will_paginate'
 
+gem 'rails_12factor'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
