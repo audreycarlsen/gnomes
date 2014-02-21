@@ -7,8 +7,10 @@ background-color: #58CF3D;;
   <div class="column">
     <img src="gnome.png" class="ui large image">
     <div class="ui transition information">
-      <div class="ui inverted basic right floated segment">RIGHT NOW:
-        <%= @weather.current.temperature.f %>&deg<br>
+      <div class="ui inverted basic right floated segment">
+        <h3 class="ui inverted header">Weather (Seattle, WA)</h3>
+          RIGHT NOW:
+        <strong><%= @weather.current.temperature.f %>&deg</strong><br>
         <%= image_tag "http://icons.wxug.com/i/c/i/#{@weather.current.icon}.gif", size: "30"  %><br><br>
         <table>
           <thead>
