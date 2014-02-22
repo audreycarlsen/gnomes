@@ -12,4 +12,10 @@ module ApplicationHelper
     date = Date.today
     return (date..date + 4.days).to_a
   end
+
+  def post_content(p)
+    simple_format(p.content).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe
+
+  end
+
 end
