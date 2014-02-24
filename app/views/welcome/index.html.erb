@@ -61,7 +61,7 @@ background-color: #58CF3D;;
               <%= p.title %>
              </div>
              <p><em><%= time_ago_in_words(p.created_at) %> ago</em></p>
-             <p><%= truncate(post_content(p), length: 200, omission: '...') %></p>
+             <p><%= truncate(p.content, length: 200, omission: '...') %></p>
              <p><%= link_to "More", post_path(p), class: "ui blue button"%>
              </p>
           </div>
