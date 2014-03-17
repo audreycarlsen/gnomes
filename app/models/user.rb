@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   has_many :events_users, dependent: :destroy
   has_many :tools
   
-
   has_many :response_yes, through: :events_users,
            class_name: "Event",
            source: :event,
