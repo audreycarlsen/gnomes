@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  has_many :events, through: :events_users
-  has_many :events_users, dependent: :destroy
-  has_many :tools
-  
   validates :username, presence: true, uniqueness: true
   validates :admin, inclusion: { in: [true, false] }
   validates :uid, presence: true, uniqueness: true
+  
+  has_many :events, through: :events_users
+  has_many :events_users, dependent: :destroy
+  has_many :tools
   
 
   has_many :response_yes, through: :events_users,
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
            source: :event,
            conditions: ['events_users.response = ?',"yes"]
 
- has_many  :response_maybe, through: :events_users,
+  has_many :response_maybe, through: :events_users,
            class_name: "Event",
            source: :event,
            conditions: ['events_users.response = ?',"maybe"]
